@@ -1,6 +1,6 @@
 import React from 'react'
 
-function signup() {
+function Login() {
     return (
         <div className="container">
         <div className="left-half">
@@ -8,9 +8,7 @@ function signup() {
         </div>
         <div className="right-half">
             <form action="#" id="Login-form">
-                <label className="Formlabel">Name</label>
-                <br />
-                <input type='text' placeholder='JaneDoe' className='nameofplayer' />
+                
                 <br />
                 <label className="Formlabel">Email</label>
                 <br />
@@ -18,13 +16,13 @@ function signup() {
                 <br /><br />
                 <label className="Formlabel">Password</label>
                 <br />
-                <input type="password" placeholder="*********" className="textbox" id="input-password" required />
+                <input type="password" placeholder="Password" className="textbox" id="input-password" required />
                 <br /><br />
-                <button className="button-login" id="button-login">Continue</button>
+                <button className="button-login" id="button-login">Login</button>
                 <div>
                     <pre>
                         <a href="forgot_password.html" className="forgotpassword">Forgot Password?</a>
-                        <a href="signup.html" className="signup" id="su"> Login Instead</a>
+                        <a href="signup.html" className="signup" id="su"> Signup Instead</a>
                     </pre>
                 </div>
             </form>
@@ -34,4 +32,4 @@ function signup() {
     );
 }
 
-export default signup;
+export default Login;
