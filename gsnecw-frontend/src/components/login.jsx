@@ -1,53 +1,28 @@
-// import React from 'react'
-
-// function Login() {
-//     return (
-//         <div className="container">
-//         <div className="left-half">
-//             <img src="https://i.pinimg.com/236x/c3/f5/5e/c3f55e407f827864a1fb2fbbdf914c3b.jpg" alt="Login Image" className="login-image" />
-//         </div>
-//         <div className="right-half">
-//             <form action="#" id="Login-form">
-                
-//                 <br />
-//                 <label className="Formlabel">Email</label>
-//                 <br />
-//                 <input type="email" placeholder="e.g JohnDoe@gmail.com" className="textbox" id="input-email" required />
-//                 <br /><br />
-//                 <label className="Formlabel">Password</label>
-//                 <br />
-//                 <input type="password" placeholder="Password" className="textbox" id="input-password" required />
-//                 <br /><br />
-//                 <button className="button-login" id="button-login">Login</button>
-//                 <div>
-//                     <pre>
-//                         <a href="forgot_password.html" className="forgotpassword">Forgot Password?</a>
-//                         <a href="signup.html" className="signup" id="su"> Signup Instead</a>
-//                     </pre>
-//                 </div>
-//             </form>
-//         </div>
-//     </div>
-        
-//     );
-// }
-
-// export default Login;
-
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Login.css';
+import email_icon from '../assets/email.png';
+import password_icon from '../assets/password.png';
 
 function Login() {
     return (
         <div className="login-container">
-            <h1>WELCOME BACK :)</h1>
+            <div className="header">
+                <div className="text">Log in</div>
+            </div>
             <form className="login-form">
-                <input type="email" placeholder="Email" className="input-field" />
-                <input type="password" placeholder="Password" className="input-field" />
+                <div className="input-group">
+                    <img src={email_icon} alt="Email Icon" />
+                    <input type="email" placeholder="Email" className="input-field" />
+                </div>
+                <div className="input-group">
+                    <img src={password_icon} alt="Password Icon" />
+                    <input type="password" placeholder="Password" className="input-field" />
+                </div>
                 <button type="submit" className="submit-button">Log in</button>
             </form>
             <p className="signup-link">
-                Don’t have an account? <a href="/signup">sign up</a>
+                Don’t have an account? <Link to="/signup">Sign up</Link>
             </p>
         </div>
     );
