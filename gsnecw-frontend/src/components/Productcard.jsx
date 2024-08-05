@@ -1,44 +1,5 @@
-import React,{useState} from 'react';
-// import Productcard from './Productcard';
-
-const url = ""
-
-
-function app1() {
-    const [count, setCount] = useState(0);
-    const [products, setProducts] = useState([]);
-
-    useEffect(() => {
-        // api call to get all products
-        async function handleApiCall() {
-            // DIspatch
-            const response = await fetch(url);//endpoints from backend
-            setProducts([
-                ...response.json() // the arry of products comming from the API
-            ])
-            // setProducts()
-        }
-
-        handleApiCall()
-
-    },[] )
-
-    // function decreseCount() {
-    //     setCount(prevcount => prevcount - 1)
-    // }
-
-    // function increseCount() {
-    //     setCount(prevcount => prevcount + 1)
-    // }
-
-    return (
-        <section>
-       <Productcard  />
-        </section>
-      
-    )
-}
-
+import React from 'react';
+import './ProductCard.css';
 
 const ProductCard = () => {
   return (
@@ -74,4 +35,4 @@ const ProductCard = () => {
   );
 };
 
-export default app1;
+export default ProductCard;
