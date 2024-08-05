@@ -8,7 +8,7 @@ body {
     height: 100vh;
   }
   
-  .login-container {
+  .signup-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,7 +27,7 @@ body {
     margin-bottom: 20px;
   }
   
-  .login-form {
+  .signup-form {
     width: 100%;
   }
   
@@ -38,9 +38,9 @@ body {
   }
   
   .input-group img {
-    width: 18px;
-    height: 18px;
-    margin-right: 5px;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
   }
   
   .input-field {
@@ -67,17 +67,17 @@ body {
     background-color: #6a1bb1;
   }
   
-  .signup-link {
+  .login-link {
     margin-top: 20px;
     color: #555;
   }
   
-  .signup-link a {
+  .login-link a {
     color: #1e90ff;
     text-decoration: none;
   }
   
-  .signup-link a:hover {
+  .login-link a:hover {
     text-decoration: underline;
   }
   

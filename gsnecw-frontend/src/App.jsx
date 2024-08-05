@@ -1,10 +1,9 @@
-
-import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Signup from './components/Signup.jsx';
 import Login from './components/login.jsx';
 import Store from './components/store.jsx';
 import ProductCard from './components/Productcard.jsx';
+import './index.css'
 
 function App() {
   return (
