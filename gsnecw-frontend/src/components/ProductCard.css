@@ -1,3 +1,10 @@
+section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
 .product-card {
   display: flex;
   flex-direction: column;
@@ -8,6 +15,11 @@
   width: 20rem; /* 80 * 0.25rem */
   max-width: 28rem; /* 112 * 0.25rem */
   gap: 1rem; /* 4 * 0.25rem */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .image-container {
@@ -32,6 +44,7 @@
   align-items: start;
   justify-content: center;
   gap: 0.5rem; /* 2 * 0.25rem */
+  padding: 10px; /* Add padding for better spacing */
 }
 
 .header {
@@ -76,6 +89,10 @@
   background-color: #F0385E; /* brand_pink */
   padding: 0.5rem;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 0.25rem;
 }
 
 .buy-now:hover {
@@ -99,6 +116,7 @@
   border-radius: 0.25rem;
   padding: 0.125rem; /* 2px */
   transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .icon-button:hover {

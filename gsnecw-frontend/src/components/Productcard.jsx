@@ -1,18 +1,18 @@
 import React from 'react';
 import './ProductCard.css';
 
-const ProductCard = () => {
+const ProductCard = ({ product }) => {
   return (
     <div className="product-card">
       <div className="image-container">
-        <img src="https://images-na.ssl-images-amazon.com/images/I/A1Vcipb1oKL._AC_SL1500_.jpg" alt="Rollerblade Macroblade 80" className="product-image" />
+        <img src={product.image} alt={product.name} className="product-image" />
       </div>
       <div className="details">
         <div className="header">
-          <h1 className="title">Rollerblade Macroblade 80</h1>
-          <h1 className="price">$ 54.73</h1>
+          <h1 className="title">{product.name}</h1>
+          <h1 className="price">${product.price}</h1>
         </div>
-        <p className="description">Patented active brake technology for better speed control and stopping power with added support great comfort</p>
+        <p className="description">{product.description}</p>
       </div>
       <div className="actions">
         <button className="buy-now">Buy Now</button>
@@ -30,7 +30,6 @@ const ProductCard = () => {
             </svg>
           </button>
         </div>
-        
       </div>
     </div>
   );

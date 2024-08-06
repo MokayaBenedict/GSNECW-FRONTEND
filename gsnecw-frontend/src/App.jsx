@@ -7,6 +7,7 @@ import Store from './components/store.jsx';
 import ProductCard from './components/Productcard.jsx';
 import NotFound from './components/NotFound';
 
+
 import './index.css'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/store" element={<Store />} />
         <Route path="/productcard" element={<ProductCard />} />
         <Route path="*" element={<NotFound />} />
+       
 
 
         
