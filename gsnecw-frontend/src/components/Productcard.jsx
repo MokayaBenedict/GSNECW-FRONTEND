@@ -30,6 +30,7 @@ const ProductCard = () => {
             </svg>
           </button>
         </div>
+        
       </div>
     </div>
   );
