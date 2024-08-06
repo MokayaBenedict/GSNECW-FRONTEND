@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AuthProvider } from './context/AppContext';
+import { AuthProvider } from './context/AppContext.jsx';
 import Signup from './components/Signup.jsx';
 import Login from './components/login.jsx';
 import Store from './components/store.jsx';
@@ -11,6 +11,7 @@ import './index.css'
 
 function App() {
   return (
+    <AuthProvider>
     <BrowserRouter>
       <Routes>
         <Route path="" element={<Login/>}/>
@@ -24,6 +25,7 @@ function App() {
         
       </Routes>
     </BrowserRouter>
+    </AuthProvider>
   );
 }
 
