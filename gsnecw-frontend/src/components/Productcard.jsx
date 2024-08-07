@@ -5,17 +5,18 @@ const ProductCard = ({ product }) => {
   return (
     <div className="product-card">
       <div className="image-container">
-        <img src={product.image} alt={product.name} className="product-image" />
+        <img src={product. image_url} alt={product.name} className="product-image" />
       </div>
       <div className="details">
         <div className="header">
+          
           <h1 className="title">{product.name}</h1>
           <h1 className="price">${product.price}</h1>
         </div>
         <p className="description">{product.description}</p>
       </div>
       <div className="actions">
-        <button className="buy-now">Buy Now</button>
+        <button  className="buy-now">Buy Now</button>
         <div className="icon-buttons">
           <button className="icon-button">
             <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">

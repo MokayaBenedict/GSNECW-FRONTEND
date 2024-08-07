@@ -1,9 +1,9 @@
 
 
-
-
 import React, { useState, useEffect } from 'react';
 import ProductCard from './Productcard';
+import './store.css';
+
 
 const url = "http://127.0.0.1:5000/products";
 
@@ -16,15 +16,15 @@ function App1() {
             try {
                 const response = await fetch(url, {
                     headers: {
-                        //'Authorization': `Bearer YOUR_ACCESS_TOKEN`, // Replace with your actual token
-                        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMjkzMDI4NywianRpIjoiOTEyNDZjZDUtNTk2Yy00NTFkLWJhZDctMDNkNjJkYzY2NDQ4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6NiwidXNlcm5hbWUiOiJpc2Fja2trIn0sIm5iZiI6MTcyMjkzMDI4NywiY3NyZiI6IjI4NjIwNTBjLTc0NmQtNGM3My05NGFhLTZkMGZjZDU4NDQ0MSIsImV4cCI6MTcyMzAxNjY4N30.Xe-d6usRGgD8n7k9sZDwnYQnHEzpDF7Ipr2F6s3RXaA"
+                        //'Authorization': `Bearer 
+                        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMzAzMTg4MywianRpIjoiNjYwMmU5ZDEtNzBkNi00YTU4LWFiNzgtYjZkYTM2MjkxOWIyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6MTEsInVzZXJuYW1lIjoiQmVuZWRpY3QifSwibmJmIjoxNzIzMDMxODgzLCJjc3JmIjoiYjUxZTJiNDUtMjAyMi00ZGNjLTk3ZTctNzQ1ZThhMWE3OWVmIiwiZXhwIjoxNzIzMTE4MjgzfQ.yOfObA0xAtPhg6Jx4itV0irhem1GzG1KxW18NZRTBuc"
                     },
                 });
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
-                console.log(data); // Log the response to check its structure
+                console.log(data);
                 setProducts(data);
             } catch (error) {
                 setError(error.message);
@@ -44,7 +44,7 @@ function App1() {
     }
 
     return (
-        <section>
+        <section className='category'>
             {products.map((product) => (
                 <ProductCard key={product.id} product={product} />
             ))}
