@@ -1,11 +1,9 @@
-
 section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   width: 100%; 
   margin: 0 auto; 
- 
 }
 
 .product-card {
@@ -125,41 +123,4 @@ section {
 
 .icon-button:hover {
   background-color: #F0385E;
-}
-
-@media (max-width: 1200px) {
-  .product-card {
-    width: 100%;
-  }
-  section{
-    grid-template-columns: repeat(2,1fr);
-  }
-
-  .image-container {
-    height: 150px; 
-  }
-  .product-image{
-    width:100%
-  }
-
-  .buy-now {
-    height: 2rem; 
-  }
-}
-
-@media (max-width: 600px) {
-  .product-card {
-    width: 100%;
-  }
-  section{
-    grid-template-columns: repeat(1,1fr);
-  }
-
-  .image-container {
-    height: 100px; 
-  }
-
-  .buy-now {
-    height: 1.5rem;
-  }
 }
