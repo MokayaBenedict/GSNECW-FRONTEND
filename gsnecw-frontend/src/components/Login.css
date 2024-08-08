@@ -3,15 +3,11 @@
     font-family: Arial, sans-serif;
     background-color: pink; 
     display: flex;
-   
-   
   }
-  
   .login-container {
     display: flex;
     flex-direction: column;
-   
-   position: absolute;
+    position: absolute;
     background: #b385d4;
     top: 50%;
     left: 50%;
@@ -21,30 +17,25 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 400px;
   }
-  
   .header .text {
     font-size: 24px;
     font-weight: bold;
     color: #8b0000;
     margin-bottom: 20px;
   }
-  
   .login-form {
     width: 100%;
   }
-  
   .input-group {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
   }
-  
   .input-group img {
     width: 18px;
     height: 18px;
     margin-right: 5px;
   }
-  
   .input-field {
     padding: 10px;
     border: 1px solid #ddd;
@@ -52,7 +43,6 @@
     outline: none;
     flex: 1;
   }
-  
   .submit-button {
     padding: 10px;
     margin-top: 20px;
@@ -64,7 +54,6 @@
     transition: background-color 0.3s;
     width: 100%;
   }
-  
   .submit-button:hover {
     background-color: #6a1bb1;
   }

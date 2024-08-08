@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import ProductCard from './Productcard';
 import './store.css';
@@ -16,7 +14,6 @@ function App1() {
             try {
                 const response = await fetch(url, {
                     headers: {
-                        //'Authorization': `Bearer 
                         "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMzAzMTg4MywianRpIjoiNjYwMmU5ZDEtNzBkNi00YTU4LWFiNzgtYjZkYTM2MjkxOWIyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6MTEsInVzZXJuYW1lIjoiQmVuZWRpY3QifSwibmJmIjoxNzIzMDMxODgzLCJjc3JmIjoiYjUxZTJiNDUtMjAyMi00ZGNjLTk3ZTctNzQ1ZThhMWE3OWVmIiwiZXhwIjoxNzIzMTE4MjgzfQ.yOfObA0xAtPhg6Jx4itV0irhem1GzG1KxW18NZRTBuc"
                     },
                 });
