@@ -14,7 +14,7 @@ section {
   align-items: center;
   justify-content: start;
   width: 328px;
-  /* max-width: 28rem;  */
+   /* max-width: 28rem;   */
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -23,7 +23,7 @@ section {
 }
 
 .image-container {
-  width: 100%;
+  width: 80%;
   height: 200px;
   display: flex;
   align-items: center;
@@ -35,7 +35,7 @@ section {
 
 .product-image {
   height: 90%;
-  width: 100%; 
+  width: 60%; 
   align-items: center;
 }
 
