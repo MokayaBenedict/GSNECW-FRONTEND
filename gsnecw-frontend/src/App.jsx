@@ -8,7 +8,7 @@ import ProductCard from './components/Productcard.jsx';
 import NotFound from './components/NotFound';
 
 
-import './index.css'
+
 
 function App() {
   return (
