@@ -1,11 +1,8 @@
-
   .signup-container {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: pink; 
     display: flex;
-   
-   
   }
   .signup-container {
     display: flex;
