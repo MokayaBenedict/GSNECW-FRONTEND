@@ -2,7 +2,7 @@
 section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 0.25rem;
   width: 100%; 
   margin: 0 auto; 
  
@@ -13,7 +13,9 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  width: 328px;
+  width: 250px;
+  height: 350px;
+  padding: 20px;
    /* max-width: 28rem;   */
   background-color: #fff;
   border: 1px solid #ddd;
@@ -23,8 +25,8 @@ section {
 }
 
 .image-container {
-  width: 80%;
-  height: 200px;
+  width: 100%;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
