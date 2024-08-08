@@ -1,7 +1,10 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: rgb(201, 168, 196);
+    /* background-color: rgb(201, 168, 196); */
+    /* background-image: url("https://i.pinimg.com/originals/de/95/2c/de952c7e509ea92f255c241d6e3386d8.jpg"); */
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 
   
