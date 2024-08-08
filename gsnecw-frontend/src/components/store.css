@@ -40,9 +40,8 @@
 }
 .category{
     display: grid;
-   
-    grid-template-columns: repeat(4, 330px);
-    grid-template-rows: repeat(0, 300px); 
+    grid-template-columns: repeat(5, 330px);
+    grid-template-rows: repeat(2, 300px); 
     /* padding: 30px; */
     gap: 2rem;
     overflow: hidden;

@@ -1,30 +1,42 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './Login.css';
 import ErrorPanel from './ErrorPanel';
 import email_icon from '../assets/email.png';
 import password_icon from '../assets/password.png';
 import AppContext from '../context/AppContext';
-import { login } from '../services/api';
+
+
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errormessage, setErrormessage] = useState(null);
+    
     const { setUser, setToken } = useContext(AppContext);
     const navigate = useNavigate();
-
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         setErrormessage(null);
-        try {
-            const data = await login(email, password);
+
+        axios({
+            method: "POST",
+            url: "http://127.0.0.1:5000/login",
+            data: {
+                email: email,
+                password: password,
+            },
+        })
+        .then((res) => {
+            const data = res?.data;
             setToken(data?.token || null);
             setUser(data?.user || null);
             setErrormessage(null);
-            navigate('/store');
-        } catch (error) {
-            setErrormessage(error?.response?.data?.message || 'Try Again');
-        }
+            navigate("/store");
+        })
+        .catch((e) => {
+            setErrormessage(e?.response?.data?.message || "Try Again");
+        });
     };
 
     return (
