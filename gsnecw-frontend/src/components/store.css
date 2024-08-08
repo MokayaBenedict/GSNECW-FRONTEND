@@ -15,11 +15,12 @@
     padding: 10px;
     border-radius: 5px;
     transition: transform 0.3s, box-shadow 0.3s;
+   
 }
 
 .item-card img {
     width: 100%;
-    height: auto;
+    height: 10%;
     border-radius: 5px;
 }
 
@@ -39,10 +40,13 @@
 }
 .category{
     display: grid;
+   
     grid-template-columns: repeat(5, 330px);
     grid-template-rows: repeat(2, 300px); 
     /* padding: 30px; */
     gap: 2rem;
     overflow: hidden;
     margin-top: 100px;
+    
+   
 }
