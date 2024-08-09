@@ -14,7 +14,11 @@ function App1() {
             try {
                 const response = await fetch(url, {
                     headers: {
+<<<<<<< HEAD
                         "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMzEyNDA2OCwianRpIjoiZGZiNGY4ZDUtNGVmNi00YjRlLTk1NmQtNGZhOGYxZjAzY2M1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6MTEsInVzZXJuYW1lIjoiQmVuZWRpY3QifSwibmJmIjoxNzIzMTI0MDY4LCJjc3JmIjoiYzRiNTdlMjUtYjc0Yi00M2U1LTliYTItZTk3NWM3YTlhMjFlIiwiZXhwIjoxNzIzMjEwNDY4fQ.JtTE2JzNrW6p7eecFSX6iTuTzgErCTfFohD5wnaIGtE"
+=======
+                        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMzEyMjkwMywianRpIjoiMTRlMzMzNmUtNTlmOC00OTdmLThmMjYtMjVjZGQ2MjJmNTE3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6OCwidXNlcm5hbWUiOiJhbGx2aW50YWdlaXNhayJ9LCJuYmYiOjE3MjMxMjI5MDMsImV4cCI6MTcyMzIwOTMwM30.mLj-Hf6dGCCASD-KyrSShK5IneMST7D8znL53wfTOvw"
+>>>>>>> cce0d915a4fbfe999202180bbbdb96b416766e89
                     },
                 });
                 if (!response.ok) {
