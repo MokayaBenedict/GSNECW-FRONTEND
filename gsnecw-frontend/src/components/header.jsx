@@ -9,10 +9,10 @@ const Header = ({ children }) => {
       {children}
       <div className="header-icons">
         <Link to="/cart" className="icon-link">
-          <AiOutlineShoppingCart title="Cart" />
+          <AiOutlineShoppingCart  title="Cart" />
         </Link>
         <Link to="/favorites" className="icon-link">
-          <AiOutlineHeart title="Favorites" />
+          <AiOutlineHeart  title="Favorites" />
         </Link>
       </div>
     </header>
