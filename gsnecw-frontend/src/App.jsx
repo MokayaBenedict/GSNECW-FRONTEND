@@ -8,6 +8,7 @@ import ProductCard from './components/Productcard.jsx';
 import NotFound from './components/NotFound';
 import Header from './components/header.jsx';
 import Footer from './components/footer.jsx';
+import Favorites from './components/favorites.jsx';
 
 function App() {
   return (
@@ -34,9 +35,10 @@ function App() {
             }
           />
           <Route path="/productcard" element={<ProductCard />} />
-          <Route path="/cart" element={<div>Cart Page</div>} />
-          <Route path="/favorites" element={<div>Favorites Page</div>} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/cart" element={<div>cart Page</div>} />
           <Route path="*" element={<NotFound />} />
+         
         </Routes>
       </BrowserRouter>
     </AuthProvider>
