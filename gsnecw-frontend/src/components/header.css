@@ -1,23 +1,43 @@
 .header-top {
     background-color: #fcdeb6;
-    margin-top: 5rem;
+    top: 0px;
     padding: 2rem; 
     display: flex; 
     justify-content: space-between;
     align-items: center; 
-    position: relative; 
-    text-decoration: underline;
+    position: sticky; 
+    height: 14rem;
+  
 }
 
 .header-text {
     font-size: 2rem; 
     font-weight: bold; 
-    color: #333; 
+    color: #d46be9; 
 }
 
 .pic-header {
-    height: 17rem; 
-    width: 20rem;
-    margin-right: -1rem; 
+    position: static;
+    height: 10rem; 
+    width: 15rem;
+    margin-right: -55rem; 
     object-fit: cover;
+    margin-bottom:10px ;
 }
+.header-icons {
+    display: flex;
+    margin-right: 30px;
+    margin-bottom: 200px;
+    
+  }
+  
+  .header-icons  {
+    margin-left: 15px;
+    font-size: 25px;
+    cursor: pointer;
+    gap: 10px;
+  }
+  .react-button{
+    color: #79092a;
+
+  }
