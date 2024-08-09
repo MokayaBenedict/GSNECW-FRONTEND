@@ -1,15 +1,23 @@
-.header-top{
+.header-top {
     background-color: #fcdeb6;
     margin-top: 5rem;
-   
+    padding: 2rem; 
+    display: flex; 
+    justify-content: space-between;
+    align-items: center; 
+    position: relative; 
     text-decoration: underline;
-   
 }
 
-.pic-header{
-    margin-left: 1031px;
-   margin-top: -100px;
-    height: 20rem;
-    width: 20rem;
+.header-text {
+    font-size: 2rem; 
+    font-weight: bold; 
+    color: #333; 
+}
 
+.pic-header {
+    height: 17rem; 
+    width: 20rem;
+    margin-right: -1rem; 
+    object-fit: cover;
 }
