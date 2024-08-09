@@ -1,12 +1,5 @@
-/* section {
+section {
   display: grid;
-<<<<<<< HEAD
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.25rem;
-  width: 100%; 
-  margin: 0 auto; 
-} */
-=======
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem; 
   width: 90%;
@@ -14,25 +7,16 @@
   margin: 0 auto;
   padding: 1rem; 
 }
->>>>>>> cce0d915a4fbfe999202180bbbdb96b416766e89
 
 .product-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-<<<<<<< HEAD
-  justify-content: start;
-  width: 250px;
-  height: 300px;
-  padding: 1rem;
-    max-width: 28rem;   
-=======
   justify-content: flex-start;
   width: 100%;
   max-width: 250px; 
   height: auto; 
   padding: 20px;
->>>>>>> cce0d915a4fbfe999202180bbbdb96b416766e89
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -41,14 +25,8 @@
 }
 
 .image-container {
-<<<<<<< HEAD
-  height: 34rem;
-  width: 170%;
-  /* height: 170px; */
-=======
   width: 100%;
   height: 200px; 
->>>>>>> cce0d915a4fbfe999202180bbbdb96b416766e89
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,15 +37,9 @@
 }
 
 .product-image {
-<<<<<<< HEAD
-  height: 150%;
-  width: 60%; 
-  align-items: center;
-=======
   max-height: 100%; 
   max-width: 100%;
   object-fit: contain; 
->>>>>>> cce0d915a4fbfe999202180bbbdb96b416766e89
 }
 
 .details {
@@ -101,15 +73,9 @@
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
-<<<<<<< HEAD
-  background-color: rgba(136, 0, 27, 0.1); 
-  padding: 0.25rem 0.5rem;
-  font-size: 1.2569rem; 
-=======
   background-color: rgba(240, 56, 94, 0.1);
   padding: 0.25rem 0.75rem; 
   font-size: 1rem;
->>>>>>> cce0d915a4fbfe999202180bbbdb96b416766e89
   font-weight: bold;
   color: #F0385E;
 }
