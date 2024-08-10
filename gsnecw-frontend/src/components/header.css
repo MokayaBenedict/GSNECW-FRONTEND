@@ -1,43 +1,59 @@
 .header-top {
-    background-color: #fcdeb6;
+    /* background-color: #fcdeb6; */
+    background-image: url("https://64.media.tumblr.com/1712efc45676e1ee927b59d15ff7d445/f7b9903ac471957a-c7/s1280x1920/0dd0d26f793d3680abb260e5ebc9a643237e3f0c.png");
+    background-size: 100% 100%;
     top: 0px;
-    padding: 2rem; 
-    display: flex; 
+    padding: 2rem;
+    display: flex;
     justify-content: space-between;
-    align-items: center; 
-    position: sticky; 
-    height: 14rem;
-  
+    align-items: center;
+    position: relative;
+    height: 18rem;
+
 }
 
-.header-text {
-    font-size: 2rem; 
-    font-weight: bold; 
-    color: #d46be9; 
+.header-name{
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 150px;
+    margin-left: -20px;
+    background-image: none;
+    background: linear-gradient(to right, #c91d84, #e08844);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+
+
+
 }
 
 .pic-header {
     position: flex;
-    height: 10rem; 
+    height: 10rem;
     width: 15rem;
-    margin-right: -55rem; 
+    margin-right: -55rem;
     object-fit: cover;
     margin-bottom:10px ;
 }
 .header-icons {
+
+
     display: flex;
-    margin-right: 30px;
+
     margin-bottom: 200px;
-    
+
   }
-  
+
   .header-icons  {
-    margin-left: 15px;
-    font-size: 25px;
+
+
+    font-size: 35px;
     cursor: pointer;
     gap: 10px;
   }
-  .react-button{
-    color: #79092a;
+  /* .react-button{
+    color: #097945;
 
-  }
+  } */
