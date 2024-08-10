@@ -17,7 +17,7 @@
 }
 
 .pic-header {
-    position: static;
+    position: flex;
     height: 10rem; 
     width: 15rem;
     margin-right: -55rem; 
