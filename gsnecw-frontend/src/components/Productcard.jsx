@@ -32,9 +32,11 @@ const ProductCard = ({ product }) => {
       <div className="details">
         <div className="header">
           <h1 className="title">{product.name}</h1>
-          <h1 className="price">${product.price}</h1>
+          <h1 className="price">Ksh:{product.price}</h1>
+          
         </div>
         <p className="description">{product.description}</p>
+        {/* <h2 className="stock">{product.stock}</h2> items remaining */}
       </div>
       <div className="actions">
         <button className="buy-now">Buy Now</button>
