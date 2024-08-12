@@ -18,7 +18,11 @@ const Cart = () => {
         <div className="cart-container">
             <h1>Your Cart</h1>
             {cart.length === 0 ? (
-                <p>Your cart is empty.</p>
+                <div className="empty-cart">
+                <img src="src/assets/cart empty.jpg" alt="Empty Cart" />
+                <p></p>
+              </div>
+                
             ) : (
                 <>
                     <ul className="cart-list">

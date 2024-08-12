@@ -11,21 +11,46 @@ const Checkout = () => {
         postalCode: '',
         country: ''
     });
+    const [specialRequests, setSpecialRequests] = useState('');
+    const [orderPlaced, setOrderPlaced] = useState(false);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setShippingDetails({ ...shippingDetails, [name]: value });
     };
 
+    const handleSpecialRequestChange = (e) => {
+        setSpecialRequests(e.target.value);
+    };
+
     const getTotalPrice = () => {
         return cart.reduce((total, product) => total + product.price * product.quantity, 0);
     };
 
+    const validateShippingDetails = () => {
+        const missingFields = [];
+        if (!shippingDetails.name) missingFields.push('name');
+        if (!shippingDetails.address) missingFields.push('address');
+        if (!shippingDetails.city) missingFields.push('city');
+        if (!shippingDetails.postalCode) missingFields.push('postal code');
+        if (!shippingDetails.country) missingFields.push('country');
+
+        return missingFields;
+    };
+
     const handlePlaceOrder = () => {
-        // Here you would typically send the order details to your backend
-        // For now, we'll just simulate an order confirmation
-        console.log("Order placed", { cart, shippingDetails });
+        if (orderPlaced) return; // prevent multiple order placements
+
+        const missingFields = validateShippingDetails();
+
+        if (missingFields.length > 0) {
+            alert(`Please fill in the following fields: ${missingFields.join(', ')}`);
+            return;
+        }
+
+        console.log("Order placed", { cart, shippingDetails, specialRequests });
         dispatch({ type: 'clear_cart' });
+        setOrderPlaced(true); // set orderPlaced to true to prevent multiple order placements
         alert('Order placed successfully!');
     };
 
@@ -58,6 +83,10 @@ const Checkout = () => {
                 </form>
             </div>
             <div className="checkout-section">
+                <h2>Special Order Requests</h2>
+                <textarea value={specialRequests} onChange={handleSpecialRequestChange} />
+            </div>
+            <div className="checkout-section">
                 <h2>Order Summary</h2>
                 <ul className="order-list">
                     {cart.map((product) => (
@@ -71,7 +100,13 @@ const Checkout = () => {
                     <h3>Total: Ksh {getTotalPrice().toFixed(2)}</h3>
                 </div>
             </div>
-            <button className="place-order-button" onClick={handlePlaceOrder}>Place Order</button>
+            <button
+                className="place-order-button"
+                onClick={handlePlaceOrder}
+                disabled={orderPlaced} 
+            >
+                {orderPlaced ? 'Order Placed' : 'Place Order'}
+            </button>
         </div>
     );
 };
