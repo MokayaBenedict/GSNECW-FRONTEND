@@ -23,7 +23,7 @@
 import React from 'react';
 
 const Favorites = () => {
-  const  addt=[favourite,SetFavourite]=useState([])
+  const[favourite,SetFavourite]=useState([])
   
   
 
