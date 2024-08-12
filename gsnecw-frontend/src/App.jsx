@@ -11,6 +11,7 @@ import NotFound from './components/NotFound';
 import Header from './components/header.jsx';
 import Footer from './components/footer.jsx';
 import Favorites from './components/favorites.jsx';
+import Checkout from './components/Checkout.jsx';
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Route path="/productcard" element={<ProductCard />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/cart" element={<Cart/>} />
+          <Route path="/Checkout" element={<Checkout/>} />
           <Route path="*" element={<NotFound />} />
          
         </Routes>
