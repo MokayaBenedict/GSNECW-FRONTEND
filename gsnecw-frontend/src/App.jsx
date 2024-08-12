@@ -10,6 +10,7 @@ import Header from './components/header.jsx';
 import Footer from './components/footer.jsx';
 import Favorites from './components/favorites.jsx';
 
+
 function App() {
   return (
     <AuthProvider>

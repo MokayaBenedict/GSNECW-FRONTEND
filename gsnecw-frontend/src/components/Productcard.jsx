@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import './ProductCard.css';
 import Footer from './footer';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product,}) => {
   const handleAddToCart = () => {
     Swal.fire({
       position: 'center',

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import ProductCard from './Productcard';
+
 import './store.css';
 
 const url = "http://127.0.0.1:5000/products";
@@ -9,6 +10,7 @@ const url = "http://127.0.0.1:5000/products";
 function App1() {
     const [products, setProducts] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
+   // const [cart, setCart] = useState([]);
     const [error, setError] = useState(null);
 
     useEffect(() => {
