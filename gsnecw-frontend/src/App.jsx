@@ -8,7 +8,7 @@ import ProductCard from './components/Productcard.jsx';
 import NotFound from './components/NotFound';
 import Header from './components/header.jsx';
 import Footer from './components/footer.jsx';
-import Favorites from './components/favorites.jsx';
+import { Favorites, Addfavourites } from './components/favorites.jsx';
 
 function App() {
   return (
