@@ -2,9 +2,12 @@ import React from 'react';
 import Swal from 'sweetalert2';
 import './ProductCard.css';
 import Footer from './footer';
+import { useCart } from '../context/CartContext';
 
 const ProductCard = ({ product }) => {
+  const { dispatch } = useCart();
   const handleAddToCart = () => {
+    dispatch({type: 'Add_to_cart', payload: product});
     Swal.fire({
       position: 'center',
       icon: 'success',
@@ -39,7 +42,7 @@ const ProductCard = ({ product }) => {
         {/* <h2 className="stock">{product.stock}</h2> items remaining */}
       </div>
       <div className="actions">
-        <button className="buy-now">Buy Now</button>
+        <button className="buy-now"onClick={handleAddToCart}>Buy Now</button>
         <div className="icon-buttons">
           <button className="icon-button" onClick={handleAddToFavorites}>
             <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
