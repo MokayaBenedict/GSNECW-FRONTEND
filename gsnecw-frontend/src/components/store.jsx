@@ -1,12 +1,14 @@
+
+
 import React, { useState, useEffect } from 'react';
 import ProductCard from './Productcard';
 import './store.css';
-
 
 const url = "http://127.0.0.1:5000/products";
 
 function App1() {
     const [products, setProducts] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -14,14 +16,13 @@ function App1() {
             try {
                 const response = await fetch(url, {
                     headers: {
-                        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMzMxNTgzOSwianRpIjoiNGIyMDFjNzYtZDg1MC00OTc5LTkxZTgtZDBkMTAxZDk4N2MwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6MTEsInVzZXJuYW1lIjoiQmVuZWRpY3QifSwibmJmIjoxNzIzMzE1ODM5LCJjc3JmIjoiZmM4MzdjMmMtNGMwZi00ZTYwLTllMWUtMzIyZmI2NzVlYWYzIiwiZXhwIjoxNzIzNDAyMjM5fQ.50m30tdfEvlBZq-6FWeOvpX7wtSaljZPtxMQyzq-yp4"
+                        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMzQ0MzIyMiwianRpIjoiMjMxYjE4YWUtN2EwNy00OWYyLWIwMTEtNjg2MmZlMjEwOWMwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6MTEsInVzZXJuYW1lIjoiQmVuZWRpY3QifSwibmJmIjoxNzIzNDQzMjIyLCJjc3JmIjoiOGNiNTVhNzctZWI2OC00ZDYwLWE2MzEtMDAxYzBjODljMDJiIiwiZXhwIjoxNzIzNTI5NjIyfQ.kZe_zwlHwytFUhQFTsP3iea_Z7snQiWqB_KEj7mkxyY " 
                     },
                 });
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
-                console.log(data);
                 setProducts(data);
             } catch (error) {
                 setError(error.message);
@@ -32,6 +33,11 @@ function App1() {
         handleApiCall();
     }, []);
 
+   
+    const filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     if (error) {
         return <div>Error: {error}</div>;
     }
@@ -41,12 +47,26 @@ function App1() {
     }
 
     return (
-        <section className='category'>
-            {products.map((product) => (
-                <ProductCard key={product.id} product={product} />
-            ))}
-        </section>
+        <div>
+            
+            <input 
+                type="text" 
+                placeholder="Search products..." 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="search-input"
+            />
+
+            <section className='category'>
+                {filteredProducts.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                ))}
+            </section>
+        </div>
     );
 }
 
 export default App1;
+
+
+

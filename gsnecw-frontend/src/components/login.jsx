@@ -30,6 +30,7 @@ function Login() {
         .then((res) => {
             const data = res?.data;
             setToken(data?.token || null);
+            localStorage.setItem("authToken",data.token)
             setUser(data?.user || null);
             setErrormessage(null);
             navigate("/store");

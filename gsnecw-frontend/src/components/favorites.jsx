@@ -22,8 +22,14 @@
 // export default Favorites;
 import React from 'react';
 
-const Favorites = ({ favorites }) => {
+const Favorites = () => {
+  const  addt=[favourite,SetFavourite]=useState([])
+  
+  
+
+
   return (
+
     <div>
         <h1>hello</h1>
     </div>
