@@ -23,11 +23,11 @@ function App() {
             element={
               <>
                 <Header>
-                  <h1>Grab upto 50% Off on
+                  <h1 className='header-name'>Grab upto 50% Off on
                     <br />
                     Selected Products
                   </h1>
-                  <img src="https://i.pinimg.com/564x/fe/9f/8b/fe9f8ba1ba1ae18e97dcc1d05d546b32.jpg" alt="Logo" className='pic-header' />
+                  {/* <img src="https://i.pinimg.com/564x/fe/9f/8b/fe9f8ba1ba1ae18e97dcc1d05d546b32.jpg" alt="Logo" className='pic-header' /> */}
                 </Header>
                 <Store />
                 <Footer />

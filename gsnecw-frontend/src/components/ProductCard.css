@@ -5,12 +5,15 @@ section {
   width: 90vw;
   max-width: 1800px; 
   margin: 0 auto;
-  padding: 1rem; 
+  padding: 1 rem; 
 }
 
 .product-card {
  
+ 
   margin-left: -10px;
+  margin-bottom: -20px;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
