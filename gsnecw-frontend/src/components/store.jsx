@@ -51,13 +51,23 @@ function App1() {
     return (
         <div>
             
-            <input 
-                type="text" 
-                placeholder="Search products..." 
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="search-input"
-            />
+            <div className="search-container">
+                <input 
+                    type="text" 
+                    placeholder="Search products..." 
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="search-input"
+                />
+                {searchQuery && (
+                    <button 
+                        className="clear-search-button" 
+                        onClick={() => setSearchQuery('')}
+                    >
+                        ❌
+                    </button>
+                )}
+            </div>
 
             <section className='category'>
                 {filteredProducts.map((product) => (
@@ -67,7 +77,6 @@ function App1() {
         </div>
     );
 }
-
 export default App1;
 
 

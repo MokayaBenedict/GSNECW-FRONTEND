@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './context/AppContext.jsx';
+import { CartProvider } from './context/CartContext.jsx';
 import Signup from './components/Signup.jsx';
 import Login from './components/login.jsx';
 import Store from './components/store.jsx';
 import ProductCard from './components/Productcard.jsx';
+import Cart from './components/Cart.jsx';
 import NotFound from './components/NotFound';
 import Header from './components/header.jsx';
 import Footer from './components/footer.jsx';
@@ -14,6 +16,7 @@ import Favorites from './components/favorites.jsx';
 function App() {
   return (
     <AuthProvider>
+      <CartProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -37,11 +40,12 @@ function App() {
           />
           <Route path="/productcard" element={<ProductCard />} />
           <Route path="/favorites" element={<Favorites />} />
-          <Route path="/cart" element={<div>cart Page</div>} />
+          <Route path="/cart" element={<Cart/>} />
           <Route path="*" element={<NotFound />} />
          
         </Routes>
       </BrowserRouter>
+      </CartProvider>
     </AuthProvider>
   );
 }
