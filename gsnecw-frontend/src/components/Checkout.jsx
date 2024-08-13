@@ -39,7 +39,7 @@ const Checkout = () => {
     };
 
     const handlePlaceOrder = () => {
-        if (orderPlaced) return; // prevent multiple order placements
+        if (orderPlaced) return; 
 
         const missingFields = validateShippingDetails();
 
@@ -50,7 +50,7 @@ const Checkout = () => {
 
         console.log("Order placed", { cart, shippingDetails, specialRequests });
         dispatch({ type: 'clear_cart' });
-        setOrderPlaced(true); // set orderPlaced to true to prevent multiple order placements
+        setOrderPlaced(true); 
         alert('Order placed successfully!');
     };
 
@@ -82,9 +82,9 @@ const Checkout = () => {
                     </div>
                 </form>
             </div>
-            <div className="checkout-section">
+            <div className="checkout-section" >
                 <h2>Special Order Requests</h2>
-                <textarea value={specialRequests} onChange={handleSpecialRequestChange} />
+                <textarea placeholder='Optional' value={specialRequests} onChange={handleSpecialRequestChange} />
             </div>
             <div className="checkout-section">
                 <h2>Order Summary</h2>
