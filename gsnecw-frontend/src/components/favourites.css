@@ -1,0 +1,61 @@
+/* Favourites.css */
+
+.favourites-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.favourites-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center; /* Center the header */
+}
+
+.favourites-list {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to new lines */
+    justify-content: center; /* Center the list items */
+    gap: 20px; /* Space between items */
+    padding: 0;
+    list-style-type: none;
+}
+
+.favourites-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content inside each item */
+    padding: 15px;
+    width: 200px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.favourites-item img {
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.favourites-item h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.favourites-item h5, .favourites-item h4 {
+    margin: 5px 0;
+}
+
+.favourites-item .price, .favourites-item .stock {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.favourites-item .description {
+    color: #7f8c8d;
+    font-size: 14px;
+}
