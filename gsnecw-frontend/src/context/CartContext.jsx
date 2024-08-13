@@ -14,7 +14,7 @@ const cartReducer = (state, action) => {
             const existingItem = state.find(item => item.id === action.payload.id);
             if (existingItem) {
                 return state;
-              
+
             } else {
                 return [...state, { ...action.payload, quantity: 1 }];
             }

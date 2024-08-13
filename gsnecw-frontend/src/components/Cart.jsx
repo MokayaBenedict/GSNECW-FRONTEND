@@ -36,7 +36,8 @@ const Cart = () => {
                 
             ) : (
                 <>
-                  <ul className="cart-list">
+            <ul className="cart-list">
+
                         {cart.map((product) => (
                             <li key={product.id} className="cart-item">
                                 <img src={product.image_url} alt={product.name} />
@@ -55,7 +56,6 @@ const Cart = () => {
                                         <button onClick={() => handleQuantityChange(product, product.quantity + 1)}>+</button>
                                     </div>
 
-                                    <p>Subtotal: Ksh {(product.price * product.quantity).toFixed(2)}</p>
 
                                     <button onClick={() => handleRemoveFromCart(product)}>Remove</button>
                                 </div>
