@@ -10,15 +10,50 @@ const ProductCard = ({ product }) => {
   const { dispatch } = useCart();
   const { favourites, dispatch: favDispatch } = useContext(FavouriteContext);
 
-  const handleAddToCart = () => {
-    dispatch({ type: 'Add_to_cart', payload: product });
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: ' Item added to cart 🛒, proceed to cart for checkout.',
-      showConfirmButton: false,
-      timer: 1500
-    });
+  const handleAddToCart = async () => {
+    try {
+      const token = localStorage.getItem('authToken');
+      if (!token) {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'You must be logged in to add to cart',
+          showConfirmButton: true,
+        });
+        return;
+      }
+
+      const response = await axios.post('http://127.0.0.1:5000/cart/add', 
+        { product_id: product.id },
+        {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        }
+      );
+
+      const data = response.data;
+
+     
+      dispatch({ type: 'Add_to_cart', payload: data });
+
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Item added to cart 🛒, proceed to cart for checkout.',
+        showConfirmButton: false,
+        timer: 1500
+      });
+
+    } catch (error) {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Error adding to cart',
+        showConfirmButton: true,
+      });
+      console.error('Error adding to cart:', error);
+    }
   };
 
   const handleAddToFavorites = async () => {
