@@ -1,56 +1,57 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-import React,{useEffect,useState} from 'react';
-import axios from "axios"
-
-export function Favorites ()  {
-  const[favourites,setFavourites]=useState([])
+export function Favorites() {
+  const [favourites, setFavourites] = useState([]);
 
   useEffect(() => {
     const fetchFavourites = async () => {
       try {
-        const token = localStorage.getItem('token'); 
+        const token = localStorage.getItem('token');
+        if (!token) {
+          console.error('No token found');
+          return;
+        }
+        
         const response = await axios.get('http://127.0.0.1:5000/favourites', {
           headers: {
-            "Authorization": `Bearer ${token}`  
+            "Authorization": `Bearer ${token}`
           }
         });
-        setFavourites(response.data); 
+        setFavourites(response.data);
       } catch (error) {
-        // setError('Error fetching favourites :(');
         console.error('Error fetching favourites :( ', error);
       }
     };
 
-    fetchFavourites(); 
+    fetchFavourites();
   }, []);
 
   if (favourites.length === 0) {
     return <div>No favourites found</div>;
   }
 
-  let fav_list=[]
-  for (let product of favourites)
-    fav_list.push(
-      <li key={product.id}>
-       <h3> {product.name} </h3>
-       <p>{product.description}</p>
-       <h3>{product.price}</h3>
-       <h3>{product.stock}</h3>
-       <img src={product.image_url} alt={product.name} style={{ width: '100px', height: '100px' }} />
-
-      </li>
-    );
-    
- 
   return (
-
     <div>
-    <ol>
-    {fav_list}
-    </ol>
+      <ol>
+        {favourites.map(product => (
+          <li key={product.id}>
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
+            <h3>{product.price}</h3>
+            <h3>{product.stock}</h3>
+            <img src={product.image_url} alt={product.name} style={{ width: '100px', height: '100px' }} />
+          </li>
+        ))}
+      </ol>
     </div>
-  )
+  );
 }
+
+
+
+
+
 
 
 export function Addfavourites({ productId }) {
