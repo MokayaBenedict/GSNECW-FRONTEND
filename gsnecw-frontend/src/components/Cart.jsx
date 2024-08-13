@@ -14,7 +14,7 @@ const Cart = () => {
         if (quantity < 1) {
             handleRemoveFromCart(product);
         } else {
-            updateQuantity(product.id, quantity);
+            Update_quantity(product.id, quantity);
         }
     };
 
@@ -34,7 +34,7 @@ const Cart = () => {
                 
             ) : (
                 <>
-                    <ul className="cart-list">
+                     <ul className="cart-list">
                         {cart.map((product) => (
                             <li key={product.id} className="cart-item">
                                 <img src={product.image_url} alt={product.name} />
