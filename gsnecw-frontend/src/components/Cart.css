@@ -40,3 +40,28 @@
 .checkout-button:hover {
     opacity: 0.8;
 }
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.quantity-controls button {
+    padding: 5px 10px;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.quantity-controls button:hover {
+    background-color: #bbb;
+}
+
+.quantity-controls span {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
