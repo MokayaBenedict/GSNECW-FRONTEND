@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Cart.css';
 
 const Cart = () => {
-    const { cart, dispatch,Update_quantity } = useCart();
+    const { cart, dispatch, updateQuantity } = useCart();
 
     const handleRemoveFromCart = (product) => {
         dispatch({ type: 'Remove_from_cart', payload: product });
@@ -14,9 +14,9 @@ const Cart = () => {
 
     const handleQuantityChange = (product, quantity) => {
         if (quantity <1) {
-            handleRemoveFromCart(product);
+            updateQuantity(product.id, 1);
         } else {
-            Update_quantity(product.id, quantity);
+              updateQuantity(product.id, quantity);
         }
     };
 
