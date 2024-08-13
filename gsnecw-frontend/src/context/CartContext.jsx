@@ -14,13 +14,14 @@ const cartReducer = (state, action) => {
             const existingItem = state.find(item => item.id === action.payload.id);
             if (existingItem) {
                 return state;
+
             } else {
                 return [...state, { ...action.payload, quantity: 1 }];
             }
         case Remove_from_cart:
             return state.filter(item => item.id !== action.payload.id);
 
-        case 'update_quantity':
+        case 'Update_quantity':
             return state.map(item =>
                 item.id === action.payload.id
                     ? { ...item, quantity: action.payload.quantity }

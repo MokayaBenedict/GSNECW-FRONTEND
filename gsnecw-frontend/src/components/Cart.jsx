@@ -9,13 +9,11 @@ const Cart = () => {
     const handleRemoveFromCart = (product) => {
         dispatch({ type: 'Remove_from_cart', payload: product });
     };
-    const handleUpdateQuantity = (product, quantity) => {
-        dispatch({ type: 'Update_quantity', payload: { product, quantity } });
-      };
+    
     
 
     const handleQuantityChange = (product, quantity) => {
-        if (quantity < 1) {
+        if (quantity <1) {
             handleRemoveFromCart(product);
         } else {
             Update_quantity(product.id, quantity);
@@ -49,9 +47,15 @@ const Cart = () => {
 
                                     <div className="quantity-controls">
                                         <button onClick={() => handleQuantityChange(product, product.quantity - 1)}>-</button>
-                                        <span>{product.quantity}</span>
+                                        <input
+                                            type="number"
+                                            value={product.quantity}
+                                            onChange={(e) => handleQuantityChange(product, parseInt(e.target.value))}
+                                            min="1"
+                                        />
                                         <button onClick={() => handleQuantityChange(product, product.quantity + 1)}>+</button>
                                     </div>
+
 
                                     <button onClick={() => handleRemoveFromCart(product)}>Remove</button>
                                 </div>
