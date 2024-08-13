@@ -4,11 +4,20 @@ import { Link } from 'react-router-dom';
 import './Cart.css';
 
 const Cart = () => {
-    const { cart, dispatch } = useCart();
+    const { cart, dispatch,Update_quantity } = useCart();
 
     const handleRemoveFromCart = (product) => {
-        dispatch({ type: 'REMOVE_FROM_CART', payload: product });
+        dispatch({ type: 'Remove_from_cart', payload: product });
     };
+
+    const handleQuantityChange = (product, quantity) => {
+        if (quantity < 1) {
+            handleRemoveFromCart(product);
+        } else {
+            updateQuantity(product.id, quantity);
+        }
+    };
+
 
     const getTotalPrice = () => {
         return cart.reduce((total, product) => total + product.price * product.quantity, 0);
@@ -32,7 +41,11 @@ const Cart = () => {
                                 <div>
                                     <h2>{product.name}</h2>
                                     <p>Ksh:{product.price}</p>
-                                    <p>Quantity: {product.quantity}</p>
+                                    <div className="quantity-controls">
+                                        <button onClick={() => handleQuantityChange(product, product.quantity - 1)}>-</button>
+                                        <span>{product.quantity}</span>
+                                        <button onClick={() => handleQuantityChange(product, product.quantity + 1)}>+</button>
+                                    </div>
                                     <button onClick={() => handleRemoveFromCart(product)}>Remove</button>
                                 </div>
                             </li>
