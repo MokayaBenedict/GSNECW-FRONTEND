@@ -4,15 +4,22 @@ import { Link } from 'react-router-dom';
 import './Cart.css';
 
 const Cart = () => {
-    const { cart, dispatch } = useCart();
+    const { cart, dispatch,Update_quantity } = useCart();
 
     const handleRemoveFromCart = (product) => {
         dispatch({ type: 'Remove_from_cart', payload: product });
     };
-    const handleUpdateQuantity = (product, quantity) => {
-        dispatch({ type: 'Update_quantity', payload: { product, quantity } });
-      };
     
+    
+
+    const handleQuantityChange = (product, quantity) => {
+        if (quantity <1) {
+            handleRemoveFromCart(product);
+        } else {
+            Update_quantity(product.id, quantity);
+        }
+    };
+
 
     const getTotalPrice = () => {
         return cart.reduce((total, product) => total + product.price * product.quantity, 0);
@@ -36,12 +43,20 @@ const Cart = () => {
                                 <div>
                                     <h2>{product.name}</h2>
                                     <p>Ksh:{product.price}</p>
-                                    <p>
-                                        Quantity:
-                                        <button onClick={() => handleUpdateQuantity(product, product.quantity - 1)}>-</button>
-                                        {product.quantity}
-                                        <button onClick={() => handleUpdateQuantity(product, product.quantity + 1)}>+</button>
-                                    </p>
+
+                                    <div className="quantity-controls">
+                                        <button onClick={() => handleQuantityChange(product, product.quantity - 1)}>-</button>
+                                        <input
+                                            type="number"
+                                            value={product.quantity}
+                                            onChange={(e) => handleQuantityChange(product, parseInt(e.target.value))}
+                                            min="1"
+                                        />
+                                        <button onClick={() => handleQuantityChange(product, product.quantity + 1)}>+</button>
+                                    </div>
+
+                                    <p>Subtotal: Ksh {(product.price * product.quantity).toFixed(2)}</p>
+
                                     <button onClick={() => handleRemoveFromCart(product)}>Remove</button>
                                 </div>
                             </li>
