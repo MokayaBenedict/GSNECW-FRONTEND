@@ -10,12 +10,14 @@ import Cart from './components/Cart.jsx';
 import NotFound from './components/NotFound';
 import Header from './components/header.jsx';
 import Footer from './components/footer.jsx';
-import Favorites from './components/favorites.jsx';
+import { Favorites, Addfavourites } from './components/favorites.jsx';
 import Checkout from './components/Checkout.jsx';
+import { FavouriteProvider } from './context/FavouriteContext.jsx';
 function App() {
   return (
     <AuthProvider>
       <CartProvider>
+        <FavouriteProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -45,6 +47,7 @@ function App() {
          
         </Routes>
       </BrowserRouter>
+      </FavouriteProvider>
       </CartProvider>
     </AuthProvider>
   );
