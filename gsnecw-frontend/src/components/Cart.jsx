@@ -9,6 +9,10 @@ const Cart = () => {
     const handleRemoveFromCart = (product) => {
         dispatch({ type: 'Remove_from_cart', payload: product });
     };
+    const handleUpdateQuantity = (product, quantity) => {
+        dispatch({ type: 'Update_quantity', payload: { product, quantity } });
+      };
+    
 
     const handleQuantityChange = (product, quantity) => {
         if (quantity < 1) {
@@ -34,18 +38,21 @@ const Cart = () => {
                 
             ) : (
                 <>
-                     <ul className="cart-list">
+            <ul className="cart-list">
+
                         {cart.map((product) => (
                             <li key={product.id} className="cart-item">
                                 <img src={product.image_url} alt={product.name} />
                                 <div>
                                     <h2>{product.name}</h2>
                                     <p>Ksh:{product.price}</p>
+
                                     <div className="quantity-controls">
                                         <button onClick={() => handleQuantityChange(product, product.quantity - 1)}>-</button>
                                         <span>{product.quantity}</span>
                                         <button onClick={() => handleQuantityChange(product, product.quantity + 1)}>+</button>
                                     </div>
+
                                     <button onClick={() => handleRemoveFromCart(product)}>Remove</button>
                                 </div>
                             </li>

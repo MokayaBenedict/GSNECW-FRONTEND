@@ -71,4 +71,24 @@
   .signup-link a:hover {
     text-decoration: underline;
   }
+  .loader-container {
+    position: fixed;
+   background-color: #ffffff;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+}
   

@@ -14,12 +14,14 @@ function App1() {
             try {
                 const response = await fetch(url, {
                     headers: {
+
                         "Authorization": `Bearer ${localStorage.getItem("authToken") }`,
+
                     },
                 });
 
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error(`Kindly login to view the store: ${response.status}`);
                 }
 
                 const data = await response.json();
