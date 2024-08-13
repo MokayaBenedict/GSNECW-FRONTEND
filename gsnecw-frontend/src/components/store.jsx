@@ -1,8 +1,5 @@
-
-
 import React, { useState, useEffect } from 'react';
 import ProductCard from './Productcard';
-
 import './store.css';
 
 const url = "http://127.0.0.1:5000/products";
@@ -10,7 +7,6 @@ const url = "http://127.0.0.1:5000/products";
 function App1() {
     const [products, setProducts] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
-   // const [cart, setCart] = useState([]);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -18,13 +14,20 @@ function App1() {
             try {
                 const response = await fetch(url, {
                     headers: {
-                        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyMzQ0MzIyMiwianRpIjoiMjMxYjE4YWUtN2EwNy00OWYyLWIwMTEtNjg2MmZlMjEwOWMwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6MTEsInVzZXJuYW1lIjoiQmVuZWRpY3QifSwibmJmIjoxNzIzNDQzMjIyLCJjc3JmIjoiOGNiNTVhNzctZWI2OC00ZDYwLWE2MzEtMDAxYzBjODljMDJiIiwiZXhwIjoxNzIzNTI5NjIyfQ.kZe_zwlHwytFUhQFTsP3iea_Z7snQiWqB_KEj7mkxyY " 
+                        "Authorization": `Bearer ${localStorage.getItem("authToken") }`,
                     },
                 });
+
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
+
                 const data = await response.json();
+                
+                if (data.token) {
+                    localStorage.setItem("authToken", data.token);
+                }
+
                 setProducts(data);
             } catch (error) {
                 setError(error.message);
@@ -35,7 +38,6 @@ function App1() {
         handleApiCall();
     }, []);
 
-   
     const filteredProducts = products.filter(product =>
         product.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
@@ -50,7 +52,6 @@ function App1() {
 
     return (
         <div>
-            
             <div className="search-container">
                 <input 
                     type="text" 
@@ -77,7 +78,5 @@ function App1() {
         </div>
     );
 }
+
 export default App1;
-
-
-
