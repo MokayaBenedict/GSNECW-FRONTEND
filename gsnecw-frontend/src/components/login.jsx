@@ -18,6 +18,7 @@ function Login() {
     const [isLoading, setIsLoading] = useState(false);
     
     const { setUser, setToken } = useContext(AppContext);
+
     const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -36,6 +37,8 @@ function Login() {
             const data = res?.data;
             setToken(data?.token || null);
             localStorage.setItem("authToken",data.token)
+            // console.log(data.token);
+            
             setUser(data?.user || null);
             setErrormessage(null);
             navigate("/store");

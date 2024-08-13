@@ -7,8 +7,12 @@ const Cart = () => {
     const { cart, dispatch } = useCart();
 
     const handleRemoveFromCart = (product) => {
-        dispatch({ type: 'REMOVE_FROM_CART', payload: product });
+        dispatch({ type: 'Remove_from_cart', payload: product });
     };
+    const handleUpdateQuantity = (product, quantity) => {
+        dispatch({ type: 'Update_quantity', payload: { product, quantity } });
+      };
+    
 
     const getTotalPrice = () => {
         return cart.reduce((total, product) => total + product.price * product.quantity, 0);
@@ -25,14 +29,19 @@ const Cart = () => {
                 
             ) : (
                 <>
-                    <ul className="cart-list">
+                  <ul className="cart-list">
                         {cart.map((product) => (
                             <li key={product.id} className="cart-item">
                                 <img src={product.image_url} alt={product.name} />
                                 <div>
                                     <h2>{product.name}</h2>
                                     <p>Ksh:{product.price}</p>
-                                    <p>Quantity: {product.quantity}</p>
+                                    <p>
+                                        Quantity:
+                                        <button onClick={() => handleUpdateQuantity(product, product.quantity - 1)}>-</button>
+                                        {product.quantity}
+                                        <button onClick={() => handleUpdateQuantity(product, product.quantity + 1)}>+</button>
+                                    </p>
                                     <button onClick={() => handleRemoveFromCart(product)}>Remove</button>
                                 </div>
                             </li>
