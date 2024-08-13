@@ -1,14 +1,11 @@
 import React, { createContext, useReducer, useContext } from 'react';
 
-// Action Types
 const ADD_TO_FAVOURITES = 'ADD_TO_FAVOURITES';
 const REMOVE_FROM_FAVOURITES = 'REMOVE_FROM_FAVOURITES';
 const SET_FAVOURITES = 'SET_FAVOURITES';
 
-// Create the context
-const FavouriteContext = createContext();
+export const FavouriteContext = createContext();
 
-// Reducer to manage state transitions
 const favouriteReducer = (state, action) => {
     switch (action.type) {
         case ADD_TO_FAVOURITES:
@@ -22,7 +19,6 @@ const favouriteReducer = (state, action) => {
     }
 };
 
-// Provider component
 export const FavouriteProvider = ({ children }) => {
     const [favourites, dispatch] = useReducer(favouriteReducer, []);
 
@@ -33,10 +29,8 @@ export const FavouriteProvider = ({ children }) => {
     );
 };
 
-// Custom hook to use the favourites context
 export const useFavourites = () => useContext(FavouriteContext);
 
-// Action creators
 export const addToFavourites = (product) => ({
     type: ADD_TO_FAVOURITES,
     payload: product

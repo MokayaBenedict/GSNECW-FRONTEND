@@ -10,44 +10,50 @@ import Cart from './components/Cart.jsx';
 import NotFound from './components/NotFound';
 import Header from './components/header.jsx';
 import Footer from './components/footer.jsx';
-import { Favorites, Addfavourites } from './components/favorites.jsx';
+import  Favourites from './components/favorites.jsx';
 import Checkout from './components/Checkout.jsx';
 import { FavouriteProvider } from './context/FavouriteContext.jsx';
+import { useParams } from 'react-router-dom';
+
+// Wrapper for passing productId from route
+function AddFavouritesWrapper() {
+  const { productId } = useParams();
+  return <AddFavourites productId={productId} />;
+}
+
 function App() {
   return (
     <AuthProvider>
       <CartProvider>
         <FavouriteProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route
-            path="/store"
-            element={
-              <>
-                <Header>
-                  <h1 className='header-name'>Grab upto 50% Off on
-                    <br />
-                    Selected Products
-                  </h1>
-                  {/* <img src="https://i.pinimg.com/564x/fe/9f/8b/fe9f8ba1ba1ae18e97dcc1d05d546b32.jpg" alt="Logo" className='pic-header' /> */}
-                </Header>
-                <Store />
-                <Footer />
-              </>
-            }
-          />
-          <Route path="/productcard" element={<ProductCard />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/cart" element={<Cart/>} />
-          <Route path="/Checkout" element={<Checkout/>} />
-          <Route path="*" element={<NotFound />} />
-         
-        </Routes>
-      </BrowserRouter>
-      </FavouriteProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/login" element={<Login />} />
+              <Route
+                path="/store"
+                element={
+                  <>
+                    <Header>
+                      <h1 className='header-name'>Grab upto 50% Off on
+                        <br />
+                        Selected Products
+                      </h1>
+                    </Header>
+                    <Store />
+                    <Footer />
+                  </>
+                }
+              />
+              <Route path="/productcard" element={<ProductCard />} />
+              <Route path="/favorites" element={<Favourites />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </FavouriteProvider>
       </CartProvider>
     </AuthProvider>
   );
