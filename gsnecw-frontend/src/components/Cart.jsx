@@ -29,6 +29,10 @@ const Cart = () => {
 
     return (
         <div className="cart-container">
+              <div className="return-to-store">
+                <Link to="/store">Return to Store</Link>
+            </div>
+
             <h1>Your Cart</h1>
             {cart.length === 0 ? (
                 <div className="empty-cart">
