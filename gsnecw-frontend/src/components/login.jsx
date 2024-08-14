@@ -9,8 +9,6 @@ import password_icon from '../assets/password.png';
 import AppContext from '../context/AppContext';
 import { bouncy } from 'ldrs';
 bouncy.register();
-
-
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
