@@ -57,7 +57,7 @@ function App1() {
             <div className="search-container">
                 <input 
                     type="text" 
-                    placeholder="Search products..." 
+                    placeholder="Search products...🔍" 
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="search-input"

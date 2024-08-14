@@ -6,9 +6,12 @@ import axios from 'axios';
 import { useContext } from 'react';
 import { FavouriteContext, setFavourites } from '../context/FavouriteContext';
 
+
 const ProductCard = ({ product }) => {
-  const { dispatch } = useCart();
+  const { cart,dispatch } = useCart();
   const { favourites, dispatch: favDispatch } = useContext(FavouriteContext);
+  //const { , dispatch: favDispatch } = useContext(FavouriteContext);
+
 
   const handleAddToCart = async () => {
     try {
@@ -22,29 +25,43 @@ const ProductCard = ({ product }) => {
         });
         return;
       }
-
+  
       const response = await axios.post('http://127.0.0.1:5000/cart/add', 
-        { product_id: product.id },
+        {
+          product_id: product.id,
+          image_url: product.image_url,
+          name: product.name,
+          price: product.price,
+          description: product.description,
+        },
         {
           headers: {
             "Authorization": `Bearer ${token}`
           }
         }
       );
-
+  
       const data = response.data;
-
+  
+      
+      const isAlreadyInCart = cart.some(item => item.id === data.id);
+      
+      if (isAlreadyInCart) {
+        console.log('Item already in cart');
+        return;
+      }
+  
      
       dispatch({ type: 'Add_to_cart', payload: data });
-
+  
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Item added to cart 🛒, proceed to cart for checkout.',
+        title: 'Item added to cart 🛒',
         showConfirmButton: false,
         timer: 1500
       });
-
+  
     } catch (error) {
       Swal.fire({
         position: 'center',
@@ -55,7 +72,6 @@ const ProductCard = ({ product }) => {
       console.error('Error adding to cart:', error);
     }
   };
-
   const handleAddToFavorites = async () => {
     try {
       const token = localStorage.getItem('authToken');
