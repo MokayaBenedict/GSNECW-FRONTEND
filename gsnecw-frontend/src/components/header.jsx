@@ -18,12 +18,35 @@ const Header = ({ children }) => {
         });
 
         localStorage.removeItem('authToken');
-
         navigate('/login');
       }
     } catch (error) {
       console.error('Error logging out:', error);
-      
+    }
+  };
+
+  const handleViewCart = async () => {
+    try {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        const response = await fetch('http://127.0.0.1:5000/cart', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        if (response.ok) {
+          const cartData = await response.json();
+          navigate('/cart', { state: { cart: cartData } });
+        } else {
+          console.error('Error fetching cart data');
+        }
+      } else {
+        navigate('/login'); 
+      }
+    } catch (error) {
+      console.error('Error viewing cart:', error);
     }
   };
 
@@ -31,9 +54,9 @@ const Header = ({ children }) => {
     <header className="header-top">
       {children}
       <div className="header-icons">
-        <Link to="/cart" className="icon-link">
+        <span className="icon-link" onClick={handleViewCart}>
           <AiOutlineShoppingCart title="Cart" />
-        </Link>
+        </span>
         <Link to="/favorites" className="icon-link">
           <AiOutlineHeart title="Favorites" />
         </Link>

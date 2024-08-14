@@ -85,7 +85,6 @@ const ProductCard = ({ product }) => {
           <h1 className="price">Ksh:{product.price}</h1>
         </div>
         <p className="description">{product.description}</p>
-        {/* <h2 className="stock">{product.stock}</h2> items remaining */}
       </div>
       <div className="actions">
         <button className="buy-now" onClick={handleAddToCart}>Buy Now</button>
