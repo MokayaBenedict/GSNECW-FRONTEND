@@ -9,18 +9,64 @@ import { FavouriteContext, setFavourites } from '../context/FavouriteContext';
 const ProductCard = ({ product }) => {
   const { dispatch } = useCart();
   const { favourites, dispatch: favDispatch } = useContext(FavouriteContext);
+  const handleAddToCart = async () => {
+    try {
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'You must be logged in to add to cart',
+                showConfirmButton: true,
+            });
+            return;
+        }
 
-  const handleAddToCart = () => {
-    dispatch({ type: 'Add_to_cart', payload: product });
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: ' Item added to cart 🛒, proceed to cart for checkout.',
-      showConfirmButton: false,
-      timer: 1500
-    });
-  };
+        //natuma kwa backend
+        const response = await axios.post('http://127.0.0.1:5000/cart/add', 
+        { 
+          product_id: product.id, 
+          quantity: 1, 
+          image_url: product.image_url 
+        },
+        {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        }
+      );
+      console.log(response.data);
 
+        if (response.status === 201) {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Item added to cart successfully!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+            //getting from db kuonyesha mbele
+            const cartResponse = await axios.get('http://127.0.0.1:5000/cart', {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+
+            
+            dispatch({ type: 'Set_cart', payload: cartResponse.data.cart_items });
+        }
+
+    } catch (error) {
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Error adding to cart',
+            showConfirmButton: true,
+        });
+        console.error('Error adding to cart:', error);
+    }
+};
   const handleAddToFavorites = async () => {
     try {
       const token = localStorage.getItem('authToken');
@@ -52,7 +98,6 @@ const ProductCard = ({ product }) => {
         return;
       }
 
-      // Update the state with the new favourite
       favDispatch(setFavourites([...favourites, data]));
 
       Swal.fire({

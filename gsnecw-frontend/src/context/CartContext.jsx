@@ -2,7 +2,8 @@ import React, { createContext, useReducer, useContext } from 'react';
 
 const Add_to_cart = 'Add_to_cart';
 const Remove_from_cart = 'Remove_from_cart';
-const clear_cart = 'clear_cart';
+const Clear_cart = 'Clear_cart';
+const Set_cart = 'Set_cart'; 
 
 const CartContext = createContext();
 
@@ -21,12 +22,15 @@ const cartReducer = (state, action) => {
             }
         case Remove_from_cart:
             return state.filter(item => item.id !== action.payload.id);
-        case clear_cart:
+        case Clear_cart:
             return [];
+        case Set_cart: 
+            return action.payload;
         default:
             return state;
     }
 };
+
 export const CartProvider = ({ children }) => {
     const [cart, dispatch] = useReducer(cartReducer, []);
 
