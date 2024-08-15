@@ -24,7 +24,7 @@ const ProductCard = ({ product }) => {
             return;
         }
 
-        //natuma kwa backend
+      
         const response = await axios.post('http://127.0.0.1:5000/cart/add', 
         { 
           product_id: product.id, 
@@ -48,7 +48,7 @@ const ProductCard = ({ product }) => {
                 timer: 1500
             });
 
-            //getting from db kuonyesha mbele
+            
             const cartResponse = await axios.get('http://127.0.0.1:5000/cart', {
                 headers: {
                     "Authorization": `Bearer ${token}`
