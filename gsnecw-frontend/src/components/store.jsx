@@ -54,23 +54,24 @@ function App1() {
 
     return (
         <div>
-            <div className="search-container">
-                <input 
-                    type="text" 
-                    placeholder="Search products...🔍" 
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="search-input"
-                />
-                {searchQuery && (
-                    <button 
-                        className="clear-search-button" 
-                        onClick={() => setSearchQuery('')}
-                    >
-                        ❌
-                    </button>
-                )}
-            </div>
+         
+         <div className="search-container">
+    <input 
+        type="text" 
+        placeholder="Search products...🔍" 
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="search-input"
+    />
+    {searchQuery && (
+        <button 
+            className="clear-search-button" 
+            onClick={() => setSearchQuery('')}
+        >
+            ❌
+        </button>
+    )}
+</div>
 
             <section className='category'>
                 {filteredProducts.map((product) => (

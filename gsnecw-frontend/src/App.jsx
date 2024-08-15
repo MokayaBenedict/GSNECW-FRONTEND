@@ -10,10 +10,10 @@ import Cart from './components/Cart.jsx';
 import NotFound from './components/NotFound';
 import Header from './components/header.jsx';
 import Footer from './components/footer.jsx';
-import  Favourites from './components/favorites.jsx';
+import Favourites from './components/favorites.jsx';
 import Checkout from './components/Checkout.jsx';
 import { FavouriteProvider } from './context/FavouriteContext.jsx';
-import { useParams } from 'react-router-dom';
+import OrderHistory from './components/OrderHistory.jsx'; // Import the OrderHistory component
 
 // Wrapper for passing productId from route
 function AddFavouritesWrapper() {
@@ -50,6 +50,7 @@ function App() {
               <Route path="/favorites" element={<Favourites />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/order-history" element={<OrderHistory />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

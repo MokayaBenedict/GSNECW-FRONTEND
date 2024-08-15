@@ -7,36 +7,34 @@ import './Cart.css';
 const Cart = () => {
     const { cart, dispatch } = useCart();
 
-    const handleRemoveFromCart = async (product) => {
+    const handleRemoveFromCart = async (product_id) => {
 
-        dispatch({ type: 'REMOVE_FROM_CART', payload: product });
-    
+        dispatch({ type: 'REMOVE_FROM_CART', payload: product_id });
+
         try {
             const token = localStorage.getItem('authToken');
             if (token) {
+                console.log(product_id)
                 await axios.delete('http://127.0.0.1:5000/cart/remove', {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     },
-                    data: { product_id: product.id }
+                    data: { product_id: product_id }
                 });
             }
         } catch (error) {
 
-
             console.error('Error removing item from cart')
 
+        };
+    }
 
-    };
-}
-    
-    
 
     const handleQuantityChange = (product, quantity) => {
-        if (quantity <1) {
+        if (quantity < 1) {
             updateQuantity(product.id, 1);
         } else {
-              updateQuantity(product.id, quantity);
+            updateQuantity(product.id, quantity);
         }
     };
 
@@ -45,19 +43,46 @@ const Cart = () => {
         return cart.reduce((total, product) => total + product.price * product.quantity, 0);
     };
 
+    const handleViewCart = async () => {
+        try {
+          const token = localStorage.getItem('authToken');
+          if (token) {
+            const response = await fetch('http://127.0.0.1:5000/cart', {
+              method: 'GET',
+              headers: {
+                'Authorization': `Bearer ${token}`
+              }
+            });
+    
+            if (response.ok) {
+              const cartData = await response.json();
+              return cartData
+            //   navigate('/cart', { state: { cart: cartData } });
+            } else {
+              console.error('Error fetching cart data');
+            }
+          } else {
+            navigate('/login'); 
+          }
+        } catch (error) {
+          console.error('Error viewing cart:', error);
+        }
+      };
+    
+
     return (
         <div className="cart-container">
-              <div className="return-to-store">
+            <div className="return-to-store">
                 <Link to="/store">Return to Store</Link>
             </div>
 
             <h1>Your Cart</h1>
             {cart.length === 0 ? (
                 <div className="empty-cart">
-                <img src="src/assets/cart empty.jpg" alt="Empty Cart" />
-                <p></p>
-              </div>
-                
+                    <img src="src/assets/cart empty.jpg" alt="Empty Cart" />
+                    <p></p>
+                </div>
+
             ) : (
                 <>
                     <ul className="cart-list">
@@ -67,11 +92,7 @@ const Cart = () => {
                                 <div>
                                     <h2>{product.name}</h2>
                                     {/* <img src={product.image_url} alt={product.name} /> */}
-                                    
-                       
-
-
-                                    <button onClick={() => handleRemoveFromCart(product)}>Remove</button>
+                                    <button onClick={() => handleRemoveFromCart(product.product_id)}>Remove</button>
                                 </div>
                             </li>
                         ))}
@@ -87,4 +108,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
