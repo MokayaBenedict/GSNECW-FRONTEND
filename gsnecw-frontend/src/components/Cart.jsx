@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Cart.css';
 
-
 const Cart = () => {
     const { cart, dispatch } = useCart();
 
