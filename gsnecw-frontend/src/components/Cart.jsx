@@ -3,7 +3,6 @@ import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Cart.css';
-import axios from 'axios';
 
 const Cart = () => {
     const { cart, dispatch } = useCart();
