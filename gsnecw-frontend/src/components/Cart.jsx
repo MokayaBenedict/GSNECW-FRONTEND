@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Cart.css';
 
+
 const Cart = () => {
     const { cart, dispatch } = useCart();
 
@@ -23,8 +24,9 @@ const Cart = () => {
         } catch (error) {
             console.error('Error removing item from cart:', error);
         }
-    };
     
+    };
+
     
 
     const handleQuantityChange = (product, quantity) => {
@@ -62,9 +64,8 @@ const Cart = () => {
                                 <div>
                                     <h2>{product.name}</h2>
                                     {/* <img src={product.image_url} alt={product.name} /> */}
+
                                     
-                                    <p>Ksh:{product.price}</p>
-                                    <p>Quantity: {product.quantity}</p>
                                     <button onClick={() => handleRemoveFromCart(product)}>Remove</button>
                                 </div>
                             </li>
