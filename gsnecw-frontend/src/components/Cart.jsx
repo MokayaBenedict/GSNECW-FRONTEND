@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './Cart.css';
 import axios from 'axios';
 
@@ -24,34 +25,10 @@ const cartReducer = (state, action) => {
 
 
 const Cart = () => {
-    const [cart, dispatch] = useReducer(cartReducer, []);
-
-    useEffect(() => {
-        const fetchCartData = async () => {
-            try {
-                const token = localStorage.getItem('authToken');
-                if (token) {
-                    const response = await axios.get('http://127.0.0.1:5000/cart', {
-                        headers: {
-                            "Authorization": `Bearer ${token}`
-                        }
-                    });
-
-                    if (response.data) {
-                        syncCart(response.data);
-                    }
-                } else {
-                    console.error('No auth token found');
-                }
-            } catch (error) {
-                console.error('Error fetching cart data:', error);
-            }
-        };
-
-        fetchCartData();
-    }, [syncCart]);
+    const { cart, dispatch } = useCart();
 
     const handleRemoveFromCart = async (product) => {
+
         dispatch({ type: 'REMOVE_FROM_CART', payload: product });
     
         try {
@@ -65,9 +42,12 @@ const Cart = () => {
                 });
             }
         } catch (error) {
-            console.error('Error removing item from cart:', error);
-        }
+
+            console.error('Error removing item from cart')
+
     };
+    
+    
 
     const handleQuantityChange = async (product, quantity) => {
         const updatedQuantity = quantity < 1 ? 1 : quantity;
@@ -109,21 +89,16 @@ const Cart = () => {
             ) : (
                 <>
                     <ul className="cart-list">
-                        {Array.isArray(cart) && cart.map((product) => (
+                        {cart.map((product) => (
                             <li key={product.id} className="cart-item">
                                 <img src={product.image_url} alt={product.name} />
                                 <div>
                                     <h2>{product.name}</h2>
-                                    <div className="quantity-control">
-                                        <label htmlFor={`quantity-${product.id}`}>Quantity:</label>
-                                        <input 
-                                            type="number" 
-                                            id={`quantity-${product.id}`} 
-                                            value={product.quantity} 
-                                            onChange={(e) => handleQuantityChange(product, parseInt(e.target.value))} 
-                                            min="1"
-                                        />
-                                    </div>
+                                    {/* <img src={product.image_url} alt={product.name} /> */}
+                                    
+                       
+
+
                                     <button onClick={() => handleRemoveFromCart(product)}>Remove</button>
                                 </div>
                             </li>
@@ -139,4 +114,4 @@ const Cart = () => {
     );
 }
 
-export default Cart
+export default Cart;

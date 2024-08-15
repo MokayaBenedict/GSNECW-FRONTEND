@@ -7,6 +7,8 @@ const Set_cart = 'Set_cart';
 const Update_quantity = 'Update_quantity'; 
 const Sync_cart = 'Sync_cart'; 
 
+
+
 const CartContext = createContext();
 
 const cartReducer = (state, action) => {

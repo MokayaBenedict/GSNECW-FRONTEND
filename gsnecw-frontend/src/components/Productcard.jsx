@@ -8,7 +8,7 @@ import { FavouriteContext, setFavourites } from '../context/FavouriteContext';
 
 
 const ProductCard = ({ product }) => {
-  const { cart,dispatch } = useCart();
+  const { dispatch } = useCart();
   const { favourites, dispatch: favDispatch } = useContext(FavouriteContext);
 
   const handleAddToCart = async () => {
