@@ -4,6 +4,8 @@ const Add_to_cart = 'Add_to_cart';
 const Remove_from_cart = 'Remove_from_cart';
 
 
+
+
 const CartContext = createContext();
 
 const cartReducer = (state, action) => {

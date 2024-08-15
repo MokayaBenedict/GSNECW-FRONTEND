@@ -1,12 +1,15 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './Cart.css';
 import axios from 'axios';
 
 const Cart = () => {
     const { cart, dispatch } = useCart();
+
     const handleRemoveFromCart = async (product) => {
+
         dispatch({ type: 'REMOVE_FROM_CART', payload: product });
     
         try {
@@ -20,7 +23,9 @@ const Cart = () => {
                 });
             }
         } catch (error) {
+
             console.error('Error removing item from cart')
+
     };
     
     
@@ -53,8 +58,7 @@ const Cart = () => {
                 
             ) : (
                 <>
-            <ul className="cart-list">
-
+                    <ul className="cart-list">
                         {cart.map((product) => (
                             <li key={product.id} className="cart-item">
                                 <img src={product.image_url} alt={product.name} />
@@ -62,9 +66,9 @@ const Cart = () => {
                                     <h2>{product.name}</h2>
                                     {/* <img src={product.image_url} alt={product.name} /> */}
                                     
-                                 
+                       
 
-                      
+
                                     <button onClick={() => handleRemoveFromCart(product)}>Remove</button>
                                 </div>
                             </li>
@@ -81,6 +85,3 @@ const Cart = () => {
 }};
 
 export default Cart;
-
-
-//http://127.0.0.1:5000/cart
