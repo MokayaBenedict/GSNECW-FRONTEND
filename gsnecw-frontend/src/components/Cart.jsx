@@ -2,6 +2,7 @@ import React from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 import './Cart.css';
+import axios from 'axios';
 
 const Cart = () => {
     const { cart, dispatch } = useCart();
@@ -52,6 +53,7 @@ const Cart = () => {
                                     
                                     <p>Ksh:{product.price}</p>
                                     <p>Quantity: {product.quantity}</p>
+                                   
                                     <button onClick={() => handleRemoveFromCart(product)}>Remove</button>
                                 </div>
                             </li>
