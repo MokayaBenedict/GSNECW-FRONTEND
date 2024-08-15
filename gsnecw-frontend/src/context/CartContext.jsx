@@ -3,8 +3,7 @@ import React, { createContext, useReducer, useContext } from 'react';
 const Add_to_cart = 'Add_to_cart';
 const Remove_from_cart = 'Remove_from_cart';
 const clear_cart = 'clear_cart';
-const Update_quantity = 'update_quantity';
-const Sync_cart = 'sync_cart';
+const Set_cart = 'Set_cart'; 
 
 const CartContext = createContext();
 
@@ -20,21 +19,15 @@ const cartReducer = (state, action) => {
             }
         case Remove_from_cart:
             return state.filter(item => item.id !== action.payload.id);
-
-        case 'Update_quantity':
-            return state.map(item =>
-                item.id === action.payload.id
-                    ? { ...item, quantity: action.payload.quantity }
-                    : item
-            );
         case clear_cart:
             return [];
-            case Sync_cart:
-                return action.payload;
+            case Set_cart: 
+            return action.payload;
         default:
             return state;
     }
 };
+
 export const CartProvider = ({ children }) => {
     const [cart, dispatch] = useReducer(cartReducer, []);
 

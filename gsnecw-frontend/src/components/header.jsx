@@ -60,9 +60,15 @@ const Header = ({ children }) => {
         <Link to="/favorites" className="icon-link">
           <AiOutlineHeart title="Favorites" />
         </Link>
-        <span className="icon-link" onClick={handleLogout}>
-          <AiOutlineLogout title="Logout" />
-        </span>
+        {localStorage.getItem('authToken') ? (
+          <span className="icon-link" onClick={handleLogout}>
+            <AiOutlineLogout title="Logout" />
+          </span>
+        ) : (
+          <Link to="/login" className="icon-link">
+            <span>Login</span>
+          </Link>
+        )}
       </div>
     </header>
   );
