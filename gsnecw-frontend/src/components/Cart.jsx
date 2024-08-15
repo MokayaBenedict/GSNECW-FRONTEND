@@ -20,7 +20,7 @@ const Cart = () => {
                 });
             }
         } catch (error) {
-            console.error('Error removing item from ca
+            console.error('Error removing item from cart')
     };
     
     
@@ -78,7 +78,7 @@ const Cart = () => {
             )}
         </div>
     );
-};
+}};
 
 export default Cart;
 
