@@ -1,11 +1,56 @@
-import React from 'react';
-import { useCart } from '../context/CartContext';
+import React, { useEffect, useReducer } from 'react';
 import { Link } from 'react-router-dom';
 import './Cart.css';
 import axios from 'axios';
 
+// Define cartReducer function
+const cartReducer = (state, action) => {
+    switch (action.type) {
+        case 'Add_to_cart':
+            const existingItem = state.find(item => item.id === action.payload.id);
+            if (existingItem) {
+                return state;
+            } else {
+                return [...state, { ...action.payload, quantity: 1 }];
+            }
+        case 'REMOVE_FROM_CART':
+            return state.filter(item => item.id !== action.payload.id);
+        case 'SET_CART':
+            return action.payload;
+        default:
+            return state;
+    }
+};
+
+
 const Cart = () => {
-    const { cart, dispatch } = useCart();
+    const [cart, dispatch] = useReducer(cartReducer, []);
+
+    useEffect(() => {
+        const fetchCartData = async () => {
+            try {
+                const token = localStorage.getItem('authToken');
+                if (token) {
+                    const response = await axios.get('http://127.0.0.1:5000/cart', {
+                        headers: {
+                            "Authorization": `Bearer ${token}`
+                        }
+                    });
+
+                    if (response.data) {
+                        syncCart(response.data);
+                    }
+                } else {
+                    console.error('No auth token found');
+                }
+            } catch (error) {
+                console.error('Error fetching cart data:', error);
+            }
+        };
+
+        fetchCartData();
+    }, [syncCart]);
+
     const handleRemoveFromCart = async (product) => {
         dispatch({ type: 'REMOVE_FROM_CART', payload: product });
     
@@ -20,19 +65,30 @@ const Cart = () => {
                 });
             }
         } catch (error) {
-            console.error('Error removing item from cart')
-    };
-    
-    
-
-    const handleQuantityChange = (product, quantity) => {
-        if (quantity <1) {
-            updateQuantity(product.id, 1);
-        } else {
-              updateQuantity(product.id, quantity);
+            console.error('Error removing item from cart:', error);
         }
     };
 
+    const handleQuantityChange = async (product, quantity) => {
+        const updatedQuantity = quantity < 1 ? 1 : quantity;
+        updateQuantity(product.id, updatedQuantity);
+
+        try {
+            const token = localStorage.getItem('authToken');
+            if (token) {
+                await axios.put('http://127.0.0.1:5000/cart/update', {
+                    product_id: product.id,
+                    quantity: updatedQuantity,
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+            }
+        } catch (error) {
+            console.error('Error updating quantity:', error);
+        }
+    };
 
     const getTotalPrice = () => {
         return cart.reduce((total, product) => total + product.price * product.quantity, 0);
@@ -40,31 +96,34 @@ const Cart = () => {
 
     return (
         <div className="cart-container">
-              <div className="return-to-store">
+            <div className="return-to-store">
                 <Link to="/store">Return to Store</Link>
             </div>
-
+    
             <h1>Your Cart</h1>
-            {cart.length === 0 ? (
+            {Array.isArray(cart) && cart.length === 0 ? (
                 <div className="empty-cart">
-                <img src="src/assets/cart empty.jpg" alt="Empty Cart" />
-                <p></p>
-              </div>
-                
+                    <img src="src/assets/cart empty.jpg" alt="Empty Cart" />
+                    <p>Your cart is empty.</p>
+                </div>
             ) : (
                 <>
-            <ul className="cart-list">
-
-                        {cart.map((product) => (
+                    <ul className="cart-list">
+                        {Array.isArray(cart) && cart.map((product) => (
                             <li key={product.id} className="cart-item">
                                 <img src={product.image_url} alt={product.name} />
                                 <div>
                                     <h2>{product.name}</h2>
-                                    {/* <img src={product.image_url} alt={product.name} /> */}
-                                    
-                                 
-
-                      
+                                    <div className="quantity-control">
+                                        <label htmlFor={`quantity-${product.id}`}>Quantity:</label>
+                                        <input 
+                                            type="number" 
+                                            id={`quantity-${product.id}`} 
+                                            value={product.quantity} 
+                                            onChange={(e) => handleQuantityChange(product, parseInt(e.target.value))} 
+                                            min="1"
+                                        />
+                                    </div>
                                     <button onClick={() => handleRemoveFromCart(product)}>Remove</button>
                                 </div>
                             </li>
@@ -78,9 +137,6 @@ const Cart = () => {
             )}
         </div>
     );
-}};
+}
 
-export default Cart;
-
-
-//http://127.0.0.1:5000/cart
+export default Cart

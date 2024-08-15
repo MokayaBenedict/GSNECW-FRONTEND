@@ -1,63 +1,96 @@
+/* Container styling */
 .cart-container {
     padding: 20px;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Cart item list styling */
 .cart-list {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
+/* Cart item styling */
 .cart-item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    transition: transform 0.2s ease;
 }
 
+.cart-item:hover {
+    transform: translateY(-2px);
+}
+
+/* Cart item image styling */
 .cart-item img {
-    width: 100px;
+    width: 120px;
     height: auto;
+    border-radius: 8px;
     margin-right: 20px;
+    object-fit: cover;
 }
 
+/* Cart summary styling */
 .cart-summary {
-    margin-top: 20px;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* Checkout button styling */
 .checkout-button {
-    padding: 10px 20px;
-    background-color: #f0385e;
+    padding: 12px 24px;
+    background-color: #28a745;
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 .checkout-button:hover {
-    opacity: 0.8;
+    background-color: #218838;
 }
 
+/* Quantity controls styling */
 .quantity-controls {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     margin-top: 10px;
 }
 
 .quantity-controls button {
-    padding: 5px 10px;
-    background-color: #ddd;
+    padding: 8px 12px;
+    background-color: #e0e0e0;
     border: none;
     cursor: pointer;
     border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 .quantity-controls button:hover {
-    background-color: #bbb;
+    background-color: #cccccc;
 }
 
 .quantity-controls span {
@@ -65,3 +98,18 @@
     font-weight: bold;
 }
 
+/* Return to store link styling */
+.return-to-store {
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.return-to-store a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.return-to-store a:hover {
+    color: #0056b3;
+}

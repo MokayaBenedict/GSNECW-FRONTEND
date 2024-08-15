@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Signup.css';
@@ -6,7 +6,6 @@ import email_icon from '../assets/email.png';
 import user_icon from '../assets/person.png';
 import password_icon from '../assets/password.png';
 import ErrorPanel from './ErrorPanel';
-import AppContext from '../context/AppContext';
 
 function Signup() {
     const [username, setUsername] = useState('');
@@ -14,7 +13,6 @@ function Signup() {
     const [password, setPassword] = useState('');
     const [errormessage, setErrormessage] = useState(null);
 
-    const { setUser, setToken } = useContext(AppContext);
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
@@ -31,11 +29,8 @@ function Signup() {
             },
         })
         .then((res) => {
-            const data = res?.data;
-            setToken(data?.token || null);
-            setUser(data?.user || null);
             setErrormessage(null);
-            navigate("/store");
+            navigate("/login"); // Redirect to login page
         })
         .catch((e) => {
             setErrormessage(e?.response?.data?.message || "Try Again");
