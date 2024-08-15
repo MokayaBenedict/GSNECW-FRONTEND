@@ -99,11 +99,17 @@ const ProductCard = ({ product }) => {
       const isAlreadyFavourite = favourites.some(fav => fav.id === data.id);
       
       if (isAlreadyFavourite) {
-        console.log('Product already in favourites');
+        Swal.fire({
+          position: 'center',
+          iconHtml: '🎉',
+          title: 'Item already in favorites ❤️',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
         return;
       }
 
-      // Update the state with the new favourite
       favDispatch(setFavourites([...favourites, data]));
 
       Swal.fire({
