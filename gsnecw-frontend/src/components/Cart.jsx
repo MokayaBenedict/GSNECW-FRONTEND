@@ -8,7 +8,8 @@ import './Cart.css';
 const Cart = () => {
     const { cart, dispatch } = useCart();
 
-    const handleRemoveFromCart =async (product) => {
+    const handleRemoveFromCart = async (product) => {
+
         dispatch({ type: 'REMOVE_FROM_CART', payload: product });
     
         try {
@@ -22,11 +23,11 @@ const Cart = () => {
                 });
             }
         } catch (error) {
-            console.error('Error removing item from cart:', error);
-        }
-    
-    };
 
+            console.error('Error removing item from cart')
+
+    };
+}
     
 
     const handleQuantityChange = (product, quantity) => {
@@ -64,8 +65,10 @@ const Cart = () => {
                                 <div>
                                     <h2>{product.name}</h2>
                                     {/* <img src={product.image_url} alt={product.name} /> */}
-
                                     
+                       
+
+
                                     <button onClick={() => handleRemoveFromCart(product)}>Remove</button>
                                 </div>
                             </li>
