@@ -20,8 +20,9 @@ const Cart = () => {
                 });
             }
         } catch (error) {
-            console.error('Error removing item from ca
+            console.error('Error removing item from cart')
     };
+}
     
     
 
@@ -83,4 +84,3 @@ const Cart = () => {
 export default Cart;
 
 
-//http://127.0.0.1:5000/cart
