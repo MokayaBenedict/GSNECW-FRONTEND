@@ -1,12 +1,15 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './Cart.css';
 import axios from 'axios';
 
 const Cart = () => {
     const { cart, dispatch } = useCart();
+
     const handleRemoveFromCart = async (product) => {
+
         dispatch({ type: 'REMOVE_FROM_CART', payload: product });
     
         try {
@@ -20,9 +23,21 @@ const Cart = () => {
                 });
             }
         } catch (error) {
-            console.error('Error removing item from cart:', error);
+
+            console.error('Error removing item from cart')
+
+    };
+    
+    
+
+    const handleQuantityChange = (product, quantity) => {
+        if (quantity <1) {
+            updateQuantity(product.id, 1);
+        } else {
+              updateQuantity(product.id, quantity);
         }
     };
+
 
     const getTotalPrice = () => {
         return cart.reduce((total, product) => total + product.price * product.quantity, 0);
@@ -51,9 +66,9 @@ const Cart = () => {
                                     <h2>{product.name}</h2>
                                     {/* <img src={product.image_url} alt={product.name} /> */}
                                     
-                                    <p>Ksh:{product.price}</p>
-                                    <p>Quantity: {product.quantity}</p>
-                                   
+                       
+
+
                                     <button onClick={() => handleRemoveFromCart(product)}>Remove</button>
                                 </div>
                             </li>
@@ -67,6 +82,6 @@ const Cart = () => {
             )}
         </div>
     );
-};
+}};
 
 export default Cart;

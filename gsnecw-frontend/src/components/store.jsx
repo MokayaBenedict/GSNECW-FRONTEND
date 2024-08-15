@@ -14,12 +14,14 @@ function App1() {
             try {
                 const response = await fetch(url, {
                     headers: {
+
                         "Authorization": `Bearer ${localStorage.getItem("authToken") }`,
+
                     },
                 });
 
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error(`Kindly login to view the store: ${response.status}`);
                 }
 
                 const data = await response.json();
@@ -55,7 +57,7 @@ function App1() {
             <div className="search-container">
                 <input 
                     type="text" 
-                    placeholder="Search products..." 
+                    placeholder="Search products...🔍" 
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="search-input"
