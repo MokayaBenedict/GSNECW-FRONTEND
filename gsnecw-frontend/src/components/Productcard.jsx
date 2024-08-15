@@ -6,9 +6,11 @@ import axios from 'axios';
 import { useContext } from 'react';
 import { FavouriteContext, setFavourites } from '../context/FavouriteContext';
 
+
 const ProductCard = ({ product }) => {
-  const { dispatch } = useCart();
+  const { cart,dispatch } = useCart();
   const { favourites, dispatch: favDispatch } = useContext(FavouriteContext);
+
   const handleAddToCart = async () => {
     try {
         const token = localStorage.getItem('authToken');
@@ -67,6 +69,7 @@ const ProductCard = ({ product }) => {
         console.error('Error adding to cart:', error);
     }
 };
+
   const handleAddToFavorites = async () => {
     try {
       const token = localStorage.getItem('authToken');
@@ -94,7 +97,14 @@ const ProductCard = ({ product }) => {
       const isAlreadyFavourite = favourites.some(fav => fav.id === data.id);
       
       if (isAlreadyFavourite) {
-        console.log('Product already in favourites');
+        Swal.fire({
+          position: 'center',
+          iconHtml: '🎉',
+          title: 'Item already in favorites ❤️',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
         return;
       }
 
