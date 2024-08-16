@@ -4,6 +4,25 @@
     margin: 0 auto;
 }
 
+.return-to-store {
+    margin-bottom: 20px; 
+}
+
+.return-to-store a {
+    display: inline-block;
+    text-decoration: none;
+    color: #f0385e;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid #f0385e;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.return-to-store a:hover {
+    background-color: #f0385e;
+    color: white;
+}
 .cart-list {
     list-style-type: none;
     padding: 0;
