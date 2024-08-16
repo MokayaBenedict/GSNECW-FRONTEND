@@ -42,15 +42,14 @@
     cursor: pointer;}
     
 .clear-search-button {
-    position: absolute;
-    right: 20px;
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    color: #888;
+        position: absolute;
+        margin-right:470px;
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        color: #888;
 }
-
 .clear-search-button:hover {
     color: #F0385E; 
 }
@@ -89,4 +88,17 @@
     gap: 2rem;
     overflow: hidden;
     margin-top: 200px;
+}
+.text {
+    font-size: 2rem; 
+    font-weight: bold;
+    color: #8a2be2; 
+    text-align: center; 
+    margin: 40px auto 20px auto; 
+    padding: 10px 20px; 
+    max-width: 800px; 
+    background-color: #f3e5f5; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    line-height: 1.5; 
 }

@@ -58,12 +58,11 @@ function App1() {
          <div className="search-container">
     <input
         type="text"
-        placeholder="Search products..."
+        placeholder="Search products...    🔍"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         className="search-input"
     />
-    <span className="search-icon">🔍</span>
     {searchQuery && (
         <button
             className="clear-search-button"
@@ -84,7 +83,7 @@ function App1() {
         </button>
     )}
 </div>
-
+<p className="text">Welcome to our shop! We're thrilled to have you here. Explore our exclusive collection and discover your favorite products. Keep skating and rocking!</p>
             <section className='category'>
                 {filteredProducts.map((product) => (
                     <ProductCard key={product.id} product={product} />

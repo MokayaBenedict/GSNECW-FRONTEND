@@ -58,7 +58,14 @@ function Favourites() {
     };
 
     if (favourites.length === 0) {
-        return <h1>No favourites found</h1>;
+        return (
+            <div className="no-favourites-fullscreen">
+                <div className="no-favourites-text">
+                    <h1>No favourites found</h1>
+                    <p>Start adding items to your favourites list!</p>
+                </div>
+            </div>
+        );
     }
 
     return (
