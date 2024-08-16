@@ -56,17 +56,29 @@ function App1() {
         <div>
          
          <div className="search-container">
-    <input 
-        type="text" 
-        placeholder="Search products...🔍" 
+    <input
+        type="text"
+        placeholder="Search products..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         className="search-input"
     />
+    <span className="search-icon">🔍</span>
     {searchQuery && (
-        <button 
-            className="clear-search-button" 
+        <button
+            className="clear-search-button"
             onClick={() => setSearchQuery('')}
+            style={{
+                position: "absolute",
+                right: "50px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                border: "none",
+                background: "transparent",
+                cursor: "pointer",
+                fontSize: "18px",
+                color: "#ccc",
+            }}
         >
             ❌
         </button>
