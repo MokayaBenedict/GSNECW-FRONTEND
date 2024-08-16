@@ -45,29 +45,28 @@ const Cart = () => {
 
     const handleViewCart = async () => {
         try {
-          const token = localStorage.getItem('authToken');
-          if (token) {
-            const response = await fetch('http://127.0.0.1:5000/cart', {
-              method: 'GET',
-              headers: {
-                'Authorization': `Bearer ${token}`
-              }
-            });
-    
-            if (response.ok) {
-              const cartData = await response.json();
-              return cartData
-            //   navigate('/cart', { state: { cart: cartData } });
+            const token = localStorage.getItem('authToken');
+            if (token) {
+                const response = await fetch('http://127.0.0.1:5000/cart', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    const cartData = await response.json();
+                    dispatch({ type: 'Set_cart', payload: cartData }); // Update local cart state with the fetched data
+                } else {
+                    console.error('Error fetching cart data');
+                }
             } else {
-              console.error('Error fetching cart data');
+                navigate('/login');
             }
-          } else {
-            navigate('/login'); 
-          }
         } catch (error) {
-          console.error('Error viewing cart:', error);
+            console.error('Error viewing cart:', error);
         }
-      };
+    };
     
 
     return (
@@ -92,6 +91,7 @@ const Cart = () => {
                                 <div>
                                     <h2>{product.name}</h2>
                                     {/* <img src={product.image_url} alt={product.name} /> */}
+                                    
                                     <button onClick={() => handleRemoveFromCart(product.product_id)}>Remove</button>
                                 </div>
                             </li>

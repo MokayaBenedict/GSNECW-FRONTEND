@@ -14,18 +14,21 @@ const CartContext = createContext();
 const cartReducer = (state, action) => {
     switch (action.type) {
         case Add_to_cart:
-            const existingItem = state.find(item => item.id === action.payload.id);
+            const existingItem = state.find(item => item.product_id === action.payload.product_id);
             if (existingItem) {
                 return state;
-
             } else {
                 return [...state, { ...action.payload, quantity: 1 }];
             }
         case Remove_from_cart:
-            return state.filter(item => item.id !== action.payload.id);
+            return state.filter(item => item.product_id !== action.payload);
 
+        case clear_cart:
+            return [];
 
-        
+        case Set_cart:
+            return action.payload;
+
         default:
             return state;
     }
