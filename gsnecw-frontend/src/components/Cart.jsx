@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Cart.css';
 
 const Cart = () => {
-    const { cart, dispatch } = useCart();
+    const { dispatch } = useCart();
+    const [cart, setCart] = useState([])
+    const [loading, setLoading] = useState(false)
+    
 
     const handleRemoveFromCart = async (product_id) => {
 
@@ -15,12 +18,17 @@ const Cart = () => {
             const token = localStorage.getItem('authToken');
             if (token) {
                 console.log(product_id)
-                await axios.delete('http://127.0.0.1:5000/cart/remove', {
+                const response = await axios.delete('http://127.0.0.1:5000/cart/remove', {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     },
                     data: { product_id: product_id }
                 });
+
+                console.log(response)
+
+                // setCart(response.cart_items)
+                window.location.reload()
             }
         } catch (error) {
 
@@ -45,28 +53,41 @@ const Cart = () => {
 
     const handleViewCart = async () => {
         try {
-            const token = localStorage.getItem('authToken');
-            if (token) {
-                const response = await fetch('http://127.0.0.1:5000/cart', {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
-
-                if (response.ok) {
-                    const cartData = await response.json();
-                    dispatch({ type: 'Set_cart', payload: cartData }); // Update local cart state with the fetched data
-                } else {
-                    console.error('Error fetching cart data');
-                }
+            setLoading(true)
+          const token = localStorage.getItem('authToken');
+          if (token) {
+            const response = await fetch('http://127.0.0.1:5000/cart', {
+              method: 'GET',
+              headers: {
+                'Authorization': `Bearer ${token}`
+              }
+            });
+    
+            if (response.ok) {
+              const cartData = await response.json();
+              console.log("cart data: ", cartData)
+              setCart(cartData.cart_items)
+              setLoading(false)
+              return cartData
+            //   navigate('/cart', { state: { cart: cartData } });
             } else {
-                navigate('/login');
+              console.error('Error fetching cart data');
             }
+          } else {
+            navigate('/login'); 
+          }
         } catch (error) {
             console.error('Error viewing cart:', error);
         }
-    };
+      };
+
+      useEffect(() => {
+        handleViewCart()
+      }, [])
+
+      if (loading) {
+        return <>Loading...</>
+      }
     
 
     return (
