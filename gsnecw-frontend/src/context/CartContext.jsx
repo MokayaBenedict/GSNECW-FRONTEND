@@ -39,7 +39,7 @@ export const CartProvider = ({ children }) => {
     const [cart, dispatch] = useReducer(cartReducer, []);
 
     const updateQuantity = (productId, quantity) => {
-        dispatch({ type:Update_quantity, payload: { id: productId, quantity } });
+        dispatch({ type:updateQuantity, payload: { id: productId, quantity } });
     };
     const syncCart = (newCartData) => {
         dispatch({ type: Sync_cart, payload: newCartData });

@@ -82,15 +82,15 @@ const Checkout = () => {
                     </div>
                 </form>
             </div>
-            <div className="checkout-section" >
+            <div className="checkout-section">
                 <h2>Special Order Requests</h2>
-                <textarea placeholder='Optional' value={specialRequests} onChange={handleSpecialRequestChange} />
+                <textarea placeholder="Optional" value={specialRequests} onChange={handleSpecialRequestChange} />
             </div>
             <div className="checkout-section">
                 <h2>Order Summary</h2>
                 <ul className="order-list">
                     {cart.map((product) => (
-                        <li key={product.id} className="order-item">
+                        <li key={product.id} className="order-item">  {/* Make sure the key is unique */}
                             <span>{product.name} (x{product.quantity})</span>
                             <span>Ksh {product.price * product.quantity}</span>
                         </li>
